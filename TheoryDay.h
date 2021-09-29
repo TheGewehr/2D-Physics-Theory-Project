@@ -50,8 +50,9 @@ Fake it until you make it! /////////////////////////////////////////////////////
 
 
 
-
-
+  SDL2_image.dll
+  SDL2.dll
+  SDL2_mixer.dll
 
 
 
