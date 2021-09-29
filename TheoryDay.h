@@ -2,9 +2,7 @@
 
 /*
 
-Day 01 theory:
-
-Fake it until you make it!
+Fake it until you make it! ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - Ancestors
 
@@ -28,10 +26,27 @@ Fake it until you make it!
 - HellBlade 
 
   Portals
+
+- Manifall Garden
+
+  Infinite map == teleporting upwards
+
+- Superliminal
+
+  The size of the cube and his size on the screen is the same, so it calculates the max distance on the space 
+  that makes it change its size
+
+- EVE Online
   
+  Bullshit Engine
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  TODOs:
 
+  1) Make a ground, then a plant and a player, the plant must modify in function of the distance
+
+  2) Make a ground, 2 portals, 1 intaque and 1 out take, add textures to make it funny
 
 
 
