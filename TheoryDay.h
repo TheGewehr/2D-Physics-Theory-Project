@@ -55,6 +55,36 @@ Fake it until you make it! /////////////////////////////////////////////////////
   SDL2_mixer.dll
 
 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  LINEAR MOVEMENT
+
+  x --> position: simply the position of the object in the space
+  v --> velocity: (a hard limit, speed of light) how quickly the objects moove
+  a --> acceleration: velocity variation
+
+  ANGULAR MOVEMENT
+
+  º --> position: what is his orientation
+  w --> velocity: the change of orientation
+  & --> acceleration: change the velocity of the angle
+  
+  3 Newton's Laws:
+
+  - An object in motion stays in motion until an external force change his state (Inertia / momentum)
+
+  - LINEAR MOMENTUM:
+     Real momentum = mass * velocity ----- Videogames momentum = velocity (FUYM, ok beacose the mass is constant)
+  - ANGULAR MOMENTUM:
+     Inertia * angular velocity
+  - If a force is aplied to an object, the acceleration of this one is going to change
+    F = m * a
+    Tork = I * &
+
+  - Every force has an inverse gravity + -gravity = 0, you do not move
+    
+
+
 
 
 
