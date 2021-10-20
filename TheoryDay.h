@@ -48,13 +48,6 @@ Fake it until you make it! /////////////////////////////////////////////////////
 
   2) Make a ground, 2 portals, 1 intaque and 1 out take, add textures to make it funny
 
-
-
-  SDL2_image.dll
-  SDL2.dll
-  SDL2_mixer.dll
-
-
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   LINEAR MOVEMENT
@@ -82,7 +75,28 @@ Fake it until you make it! /////////////////////////////////////////////////////
     Tork = I * &
 
   - Every force has an inverse gravity + -gravity = 0, you do not move
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    Integration --> Change with derivatives and integrals
+
+    Integration Methods:
+
+    EULER methods: // First order integrators
+
+    Forward 
+    - For next frame: Body.x = Body.x + (velocity * delta time) // Kinda unprecise, used for smooth movement, it assume the velocity is constant
+
+    Backwards
+    - For last frame: Body.x = Body.x + (velocity * delta time)
+
+    Verlet methods: // Second order integrators
+
+    - Velocity Verlet Method: Area = (velocity1*deltatime) + 0.5 * deltatime * (velocity2 * velocity1)
+
+    - STORMER Verlet Method...
+
+    Runge Kuta (really expensive and accurrate)
 
 
 
