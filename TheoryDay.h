@@ -98,7 +98,12 @@ Fake it until you make it! /////////////////////////////////////////////////////
 
     Runge Kuta (really expensive and accurrate)
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    1) Compute forces
+    2) Second Law of Newton F= m*a   a = 1/m * (all the forces computed in first step)
+    3) Integrate -> verlet v2=v1+a*dt , x2 = x1+v1*dt+0.5 ...
+    4) Collision
 
 
 
