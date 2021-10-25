@@ -105,11 +105,33 @@ Fake it until you make it! /////////////////////////////////////////////////////
     3) Integrate -> verlet v2=v1+a*dt , x2 = x1+v1*dt+0.5 ...
     4) Collision
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    Grafics Engyne      We want them to run at the same time, same framerate
+    Physics Engyne 
 
 
 
+    Fixed delta time
+
+    double t = 0;
+    double dt = 1.0 / 60.0;
 
 
+    Game Loop
+    {
+    //start a time counter
+    tic();
+
+    integrate (posvel,t,dt);
+    t+=dt;
+    telapsed = toc();
+
+    if (dt -telapsed > 0.00) sleep (dt - telapsed);
+
+    }
+
+    Try tu run it in real time, if not FUIM it
 
 
 
