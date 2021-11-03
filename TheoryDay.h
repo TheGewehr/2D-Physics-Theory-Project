@@ -134,17 +134,101 @@ Fake it until you make it! /////////////////////////////////////////////////////
     Try tu run it in real time, if not FUIM it
 
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // To Code a physics engyne
+
+    1- COMPUTE FORCES: Fgravity, Fdrag, F
+    2- Newton 2nd law: everything tend to maintain his movement, F = mass * acceleration     
+                       a -> change in velocity -> change position
+    3- Integrations (Velocity Verlet integration method, STORMER Verlet) 
+                                                                         x = v1 d t + 0.5 v2 - v1 d t^2 Velocity
+                                                                         x = ((x1-x2)/dt) d t + 0.5 v2 - v1 d t^2 Stormer
+    4- Collisions
 
 
+    Fgravity = -mass * gravity
+    Momentum = m * v
+
+    How to start --> spoil
+
+    class ball
+    {
+    position
+        double x, y;
+    velocity
+        double vx,vy;
+    acceleration
+        double ax,ay;
+    force
+        double fx,fy;
+    mass
+        double mass;
+    Aerodynamics force
+        double surface;
+        double cd;
+    Has physics enable?
+    bool isPhysicsEnabled;
+    }
+
+   
+    void moduleScene::Start()
+    {
+        Ball ball;
+        ball.isPhysicsEnabled = true;
+
+        ball.mass = 10;
+        ball.surface = 5;
+        ball.cd = 0.1;
+
+        ball.x=0.0;
+        ball.y=0.0;
+
+        ball.vx=10.0;
+        ball.vy=5.0;
 
 
+    }
+
+    void Update()
+    {
+     #Step 0
+      ball.fx = ball.fy = 0.0; 
+      ball.ax = ball.ay = 0.0;
+
+     #Step 1
+      double fgx = ball.mass * 0.0;
+      double fgy = ball.mass * -9.81;
+
+      ball.fx += fgx;
+      ball.fy += fgy;
+
+      double speed = ball.speed(ball.vx, ball.vy);
+      double fdx;
+      double fdy;
+
+      ball.fx += fdx;
+      ball.fy += fdy;
+
+    #Step 2 2nd N law
+
+     double inv_mass= 1.0 / ball.mass;
+     ball.ax = ball.fx * inv_mass;
+     ball.ay = ball.fy * inv_mass;
+
+    #Step 3 Integration
+    //velocity verlet
+     ball.x += ball.vx * dt +0.5*ball.ax*dt*dt;
+     ball.y += ball.vy * dt +0.5*ball.ay*dt*dt;
+     ball.vx += ball.ax * dt;
+     ball.vy += ball.ay * dt;
+
+     make it in a function void integration_velocity_verlet(ball *ball)
+
+     #Step 4 solve collisions
 
 
-
-
-
-
-
+    }
 
 
 
