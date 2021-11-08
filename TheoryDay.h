@@ -258,6 +258,14 @@ Fake it until you make it! /////////////////////////////////////////////////////
 
     FUYM, multiply by a number lower than 1 and higher than 0 , we multiply after va or/and vb
 
+    after va=va* coeficient of restitution
+
+    solve collisions:
+
+    Ball in a wall 
+
+
+
 
 
 
