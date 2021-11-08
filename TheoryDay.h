@@ -228,9 +228,35 @@ Fake it until you make it! /////////////////////////////////////////////////////
      #Step 4 solve collisions
 
 
+
+
     }
 
+    At every frame:
+    1 Player input
+    2 game logic
+    3 physics (farces, F=m*a, integrate, collisions)
+    4 GFX
 
+    You can do multithreading with them
+
+    momentum before collision = ma *va +mb *vb;
+    momentum after collision = ma *va +mb *vb; // do not know velocityes
+
+    If momentum is constant = 0 -> momentum before = momentum after
+
+    Energy mechanical = 0 -> Ekinetic 0.5*m*v*v + Epotential Depends if springs or gravity...
+    
+    before = Ek = 0.5*ma*va*va +0.5*mb*vb*vb;
+    after = Ek = 0.5*ma*va*va +0.5*mb*vb*vb; // velocity changes
+
+    conservation of mechanical energy
+
+    get va after anda vb after
+
+    main issue: we assume that the collision is elastic
+
+    FUYM, multiply by a number lower than 1 and higher than 0 , we multiply after va or/and vb
 
 
 
