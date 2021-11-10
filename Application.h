@@ -10,7 +10,7 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
-#include "ModulePhysics.h"
+#include "Physics.h"
 #include "ModuleSceneIntro.h"
 
 class Application
@@ -23,7 +23,7 @@ public:
 	ModuleAudio* audio;
 	ModulePlayer* player;
 	ModuleSceneIntro* scene_intro;
-	ModulePhysics* physics;
+	Physics* physics;
 
 private:
 
@@ -39,6 +39,8 @@ public:
 	bool CleanUp();
 
 private:
+
+	int start;
 
 	void AddModule(Module* mod);
 };

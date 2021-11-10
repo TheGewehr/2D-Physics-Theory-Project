@@ -1,5 +1,5 @@
-#ifndef __2DVECTOR_H__
-#define __2DVECTOR_H__
+#ifndef __VECTOR2D_H__
+#define __VECTOR2D_H__
 
 //using namespace std;
 

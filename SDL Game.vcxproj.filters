@@ -62,14 +62,8 @@
     <ClInclude Include="p2List.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="ModulePhysics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TheoryDay.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="2DVector.h">
-      <Filter>Header Files\Containers</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
       <Filter>Physics Engyne\Heather Files</Filter>
@@ -82,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="Physics.h">
       <Filter>Physics Engyne\Heather Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Header Files\Containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -115,8 +112,8 @@
     <ClCompile Include="ModuleSceneIntro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModulePhysics.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Physics.cpp">
+      <Filter>Physics Engyne\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
