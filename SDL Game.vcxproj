@@ -77,6 +77,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Box.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="2DVector.h" />
     <ClInclude Include="ModulePhysics.h" />
@@ -91,6 +92,9 @@
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2DynArray.h" />
     <ClInclude Include="p2Point.h" />
+    <ClInclude Include="Circle.h" />
+    <ClInclude Include="Physics.h" />
+    <ClInclude Include="Polygon.h" />
     <ClInclude Include="TheoryDay.h" />
   </ItemGroup>
   <ItemGroup>
