@@ -12,6 +12,7 @@ void log(const char file[], int line, const char* format, ...);
 #define RADTODEG 57.295779513082320876f
 
 typedef unsigned int uint;
+typedef unsigned char uchar;
 
 enum update_status
 {
@@ -29,4 +30,4 @@ enum update_status
 #define WIN_BORDERLESS false
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC true
-#define TITLE "Theory Physics Playground"
+#define TITLE "Theory Physics, future worms"

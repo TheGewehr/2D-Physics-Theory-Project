@@ -59,6 +59,9 @@
     <ClInclude Include="TheoryDay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="2DVector.h">
+      <Filter>Header Files\Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
