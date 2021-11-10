@@ -258,11 +258,31 @@ Fake it until you make it! /////////////////////////////////////////////////////
 
     FUYM, multiply by a number lower than 1 and higher than 0 , we multiply after va or/and vb
 
-    after va=va* coeficient of restitution
+    after v'a=va*0.5 per example coeficient of restitution
 
     solve collisions:
 
+    ////////////////////////////////////////////////////////////////////////////////
+
     Ball in a wall 
+
+    one force is perpendiclar to the face of the object
+    another force in axis x paralel to the object face
+
+    v'a->x = va * coeficient of friction
+    v'a->y = va * coeficient of restitution
+
+    rotation = cos angle  -sin angle
+               sin angle  cos angle
+
+               v'a (local world) = rotation of -angle * va (in original world)
+               apply changes of velocity
+               then rotate everything by angle
+
+    Positions solvers:
+    - Do not solve it
+    - take pos 1 and 2, then tp the object outside and apply velocity and stuff on him
+    - Do ray tracing, tp to the last non collision position and apply stuff
 
 
 
