@@ -1,7 +1,7 @@
 #include "Physics.h"
-#include "Application.h"
-#include "Module.h"
-#include "ModuleInput.h"
+//#include "Application.h"
+//#include "Module.h"
+//#include "ModuleInput.h"
 
 // PhysBody source code
 
@@ -22,19 +22,19 @@ int PhysBody::GetId() const
 	return id;
 }
 
-float PhysBody::GetPositionX() const
+int PhysBody::GetPositionX() const
 {
-	return position.x;
+	return worldPosition.x;
 }
 
-float PhysBody::GetPositionY() const
+int PhysBody::GetPositionY() const
 {
-	return position.y;
+	return worldPosition.y;
 }
 
-Vector2D<float> PhysBody::GetPositionVector() const
+Vector2D<int> PhysBody::GetPositionVector() const
 {
-	return position;
+	return worldPosition;
 }
 
 Module* PhysBody::GetListener() const
@@ -47,11 +47,28 @@ ObjType PhysBody::GetType() const
 	return objectType;
 }
 
-void PhysBody::SetType(ObjType type) const
+void PhysBody::SetType(ObjType type)
 {
 	objectType = type;
 }
 
+void PhysBody::SetWorldPosition(int x, int y)
+{
+	Vector2D<int>* v = new Vector2D<int>;
+
+	v->x = x;
+	v->y = y;
+
+	worldPosition = *v;
+
+	delete v;
+	
+}
+
+void PhysBody::SetListener(Module* lis) 
+{
+	listener = lis;
+}
 
 
 
@@ -127,3 +144,9 @@ void Physics::SetDebug(bool d)
 {
 	debug = d;
 }
+
+p2List<PhysBody*> Physics::GetWorld()
+{
+	return World;
+}
+

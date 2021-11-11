@@ -1,20 +1,30 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
-//#include "Application.h"
+#include "Application.h"
 #include "Vector2D.h"
+#include "p2Point.h"
+#include "ModuleInput.h"
+
+//struct ObjType
+//{
+//	int b2_staticBody = -1;
+//	int b2_kinematicBody = 1;
+//	int b2_dynamicBody = 0;
+//
+//};
 
 enum ObjType
 {
-	b2_staticBody = 0,
-	b2_kinematicBody,
-	b2_dynamicBody
+	 staticBody = 0,
+	 kinematicBody ,
+	 dynamicBody 
 
 };
 
 // Como voy a medir las distancias?
 
-class PhysBody
+class PhysBody : public Physics
 {
 public:
 	PhysBody() : listener(nullptr) //, body(NULL)
@@ -25,22 +35,23 @@ public:
 
 	float GetRotation() const;
 	
-	int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
+	virtual int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
 	int GetId() const;
-	float GetPositionX() const;
-	float GetPositionY() const;
-	Vector2D<float> GetPositionVector() const;
+	int GetPositionX() const;
+	int GetPositionY() const;
+	Vector2D<int> GetPositionVector() const;
 	Module* GetListener() const;
+	void SetListener(Module* lis) ;
 	ObjType GetType() const;
-	void SetType(ObjType type) const;
+	void SetType(ObjType type);
+	void SetWorldPosition(int x, int y);
 
 
 
 private:
 
 	int id;
-	Vector2D<float> position;
-	int width, height;
+	Vector2D<int> worldPosition; // Pixels
 	ObjType objectType;
 	
 	Module* listener;
@@ -54,6 +65,9 @@ public:
 	Physics(Application* app, bool start_enabled = true);
 	~Physics();
 
+	Physics() {};
+	~Physics();
+
 	bool Start();
 	update_status PreUpdate();
 	update_status Update();
@@ -61,7 +75,7 @@ public:
 	bool CleanUp();
 	bool GetDebug();
 	void SetDebug(bool d);
-
+	p2List<PhysBody*> GetWorld();
 
 
 private:

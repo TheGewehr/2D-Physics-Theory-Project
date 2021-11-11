@@ -115,5 +115,8 @@
     <ClCompile Include="Physics.cpp">
       <Filter>Physics Engyne\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Physics Engyne\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
