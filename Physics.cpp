@@ -74,16 +74,6 @@ void PhysBody::SetListener(Module* lis)
 
 // Physics source code
 
-Physics::Physics(Application* app, bool start_enabled) : Module(app, start_enabled)
-{
-	debug = true;
-}
-
-Physics::~Physics()
-{
-
-}
-
 bool Physics::Start()
 {
 	LOG(" Starting the Physics Engyne! ");
@@ -93,12 +83,12 @@ bool Physics::Start()
 
 update_status Physics::PreUpdate()
 {
-
+	return UPDATE_CONTINUE;
 }
 
 update_status Physics::Update()
 {
-
+	return UPDATE_CONTINUE;
 }
 
 update_status Physics::PostUpdate()

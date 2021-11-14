@@ -24,49 +24,18 @@ enum ObjType
 
 // Como voy a medir las distancias?
 
-class PhysBody : public Physics
-{
-public:
-	PhysBody() : listener(nullptr) //, body(NULL)
-	{}
 
-	~PhysBody()
-	{}
-
-	float GetRotation() const;
-	
-	virtual int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
-	int GetId() const;
-	int GetPositionX() const;
-	int GetPositionY() const;
-	Vector2D<int> GetPositionVector() const;
-	Module* GetListener() const;
-	void SetListener(Module* lis) ;
-	ObjType GetType() const;
-	void SetType(ObjType type);
-	void SetWorldPosition(int x, int y);
-
-
-
-private:
-
-	int id;
-	Vector2D<int> worldPosition; // Pixels
-	ObjType objectType;
-	
-	Module* listener;
-};
 
 class Physics : public Module
 {
 public:
 	
 	
-	Physics(Application* app, bool start_enabled = true);
+	Physics(Application* app, bool start_enabled = true) {};
 	~Physics();
 
-	Physics() {};
-	~Physics();
+	Physics() { debug = true; };
+	~Physics() {};
 
 	bool Start();
 	update_status PreUpdate();
@@ -85,5 +54,38 @@ private:
 	p2List<PhysBody*> World;
 
 
+};
+
+class PhysBody : public Physics
+{
+public:
+	PhysBody() : listener(nullptr) //, body(NULL)
+	{}
+
+	~PhysBody()
+	{}
+
+	float GetRotation() const;
+
+	virtual int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
+	int GetId() const;
+	int GetPositionX() const;
+	int GetPositionY() const;
+	Vector2D<int> GetPositionVector() const;
+	Module* GetListener() const;
+	void SetListener(Module* lis);
+	ObjType GetType() const;
+	void SetType(ObjType type);
+	void SetWorldPosition(int x, int y);
+
+
+
+private:
+
+	int id;
+	Vector2D<int> worldPosition; // Pixels
+	ObjType objectType;
+
+	Module* listener;
 };
 
