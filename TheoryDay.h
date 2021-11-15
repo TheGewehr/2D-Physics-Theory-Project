@@ -284,6 +284,22 @@ Fake it until you make it! /////////////////////////////////////////////////////
     - take pos 1 and 2, then tp the object outside and apply velocity and stuff on him
     - Do ray tracing, tp to the last non collision position and apply stuff
 
+    ///////////////////////////////////////////////////////////////////////////////
+
+    Gravity:
+
+    //Gravity = (mass1 * mass2)/r*r
+
+    Force g = -G * ((mass1 * mass2)/r*r)
+
+    Force g = constant
+
+    Force g = linear
+
+    Force g = scale down
+
+
+    
 
 
 
