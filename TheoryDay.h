@@ -298,6 +298,20 @@ Fake it until you make it! /////////////////////////////////////////////////////
 
     Force g = scale down
 
+    //////////////////////////////////////////////////////////////////////
+
+    Aero Dynamics:
+     
+     // Lift = 0.5 * (fluid density) * v*v (the speed of the air that impacts on the wing, or object)   on some reference surface
+
+     In 2D:
+
+     Lift = y = 0.5 * (fluid density) * v*v * coeficient of lift
+     Drag = x = 0.5 * (fluid density) * v*v * coeficient of drag
+
+     In 3D
+
+     
 
     
 
