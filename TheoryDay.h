@@ -306,10 +306,30 @@ Fake it until you make it! /////////////////////////////////////////////////////
 
      In 2D:
 
-     Lift = y = 0.5 * (fluid density) * v*v * coeficient of lift
-     Drag = x = 0.5 * (fluid density) * v*v * coeficient of drag
+     Lift = y = 0.5 * (fluid density) * v*v * coeficient of lift (be carefull it is exponential)
+     Drag = x = 0.5 * (fluid density) * v*v * coeficient of drag (be carefull it is exponential)
 
-     In 3D
+     Velocity = Velocity of the wind - Velocity of the object
+
+     The Drag force goes in the direction of the wind (opposite to the obj velocity)
+
+     ///////////////////////////////////////////////////////////////////
+
+     Hidro physics:
+
+     On the water (aero):
+
+     drag
+     lift
+
+     In the water:
+
+     same but has more specific
+
+     drag 
+     lift 
+     Boyance force (apply on the centroid)
+
 
      
 
