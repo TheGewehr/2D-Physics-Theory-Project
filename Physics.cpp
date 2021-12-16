@@ -8,13 +8,13 @@
 
 float PhysBody::GetRotation() const
 {
-
+	return float();
 }
 
 
 int PhysBody::RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const
 {
-
+	return int();
 }
 
 int PhysBody::GetId() const
