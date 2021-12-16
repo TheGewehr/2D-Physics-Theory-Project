@@ -34,8 +34,7 @@ public:
 	Physics(Application* app, bool start_enabled = true) {};
 	~Physics();
 
-	Physics() { debug = true; };
-	~Physics() {};
+	
 
 	bool Start();
 	update_status PreUpdate();
@@ -56,7 +55,7 @@ private:
 
 };
 
-class PhysBody : public Physics
+class PhysBody 
 {
 public:
 	PhysBody() : listener(nullptr) //, body(NULL)

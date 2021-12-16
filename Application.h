@@ -13,6 +13,8 @@
 #include "Physics.h"
 #include "ModuleSceneIntro.h"
 
+class Physics;
+
 class Application
 {
 public:

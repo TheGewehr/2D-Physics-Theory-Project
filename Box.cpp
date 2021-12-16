@@ -1,5 +1,7 @@
 #include "Box.h"
-
+#include "Globals.h"
+#include "Application.h"
+#include "Physics.h"
 
 int Box::GetWidth()const // In pixels
 {
@@ -53,7 +55,7 @@ void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module
 	b->SetListener(lis);
 
 	App->physics->GetWorld().add(b);
-
+	
 
 	delete b;
 }
