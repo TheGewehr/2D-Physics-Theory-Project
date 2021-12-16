@@ -74,6 +74,10 @@ void PhysBody::SetListener(Module* lis)
 
 // Physics source code
 
+Physics::~Physics()
+{
+}
+
 bool Physics::Start()
 {
 	LOG(" Starting the Physics Engyne! ");
