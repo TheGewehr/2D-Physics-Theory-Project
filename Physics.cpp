@@ -1,4 +1,5 @@
 #include "Physics.h"
+#include "Box.h"
 //#include "Application.h"
 //#include "Module.h"
 //#include "ModuleInput.h"
@@ -146,7 +147,7 @@ update_status Physics::PostUpdate()
 bool Physics::CleanUp()
 {
 	LOG(" Stopping the Physics Engyne! ");
-
+	delete(&World);
 	return true;
 }
 
@@ -163,5 +164,11 @@ void Physics::SetDebug(bool d)
 p2List<PhysBody*> Physics::GetWorld()
 {
 	return World;
+}
+
+void Physics::AddBoxToWorld(int x, int y, int w, int h)
+{
+	Box box(x, y, w, h);
+	World.add(&box);
 }
 

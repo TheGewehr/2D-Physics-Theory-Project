@@ -45,6 +45,7 @@ public:
 	void SetDebug(bool d);
 	p2List<PhysBody*> GetWorld();
 
+	void AddBoxToWorld(int x, int y, int w, int h);
 
 private:
 
