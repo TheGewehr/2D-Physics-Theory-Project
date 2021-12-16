@@ -79,6 +79,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="ModulePhysbodyController.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="p2List.h" />
     <ClInclude Include="Module.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
+    <ClCompile Include="ModulePhysBodyController.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleSceneIntro.cpp" />

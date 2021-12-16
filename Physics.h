@@ -17,13 +17,12 @@
 enum ObjType
 {
 	 staticBody = 0,
-	 kinematicBody ,
+	 kinematicBody,
 	 dynamicBody 
 
 };
 
 // Como voy a medir las distancias?
-
 
 
 class Physics : public Module
@@ -78,7 +77,18 @@ public:
 	void SetType(ObjType type);
 	void SetWorldPosition(int x, int y);
 
+	void PreUpdate() {
 
+	}
+	void Update() {
+
+	}
+	void PostUpdate() {
+
+	}
+
+
+	bool pendingToDelete = false;
 
 private:
 

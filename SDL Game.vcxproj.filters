@@ -80,6 +80,9 @@
     <ClInclude Include="Vector2D.h">
       <Filter>Header Files\Containers</Filter>
     </ClInclude>
+    <ClInclude Include="ModulePhysbodyController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -117,6 +120,9 @@
     </ClCompile>
     <ClCompile Include="Box.cpp">
       <Filter>Physics Engyne\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePhysBodyController.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
