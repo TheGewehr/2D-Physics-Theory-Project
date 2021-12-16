@@ -54,6 +54,8 @@ private:
 	int width, height; //Pixels
 	bool shouldCollide;
 
+	
+
 	Vector2D<int> localPosition;
 
 
