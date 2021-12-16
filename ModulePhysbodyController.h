@@ -29,6 +29,8 @@ public:
 
 	void DebugDraw();
 
+	bool debug;
+
 	// All existing colliders in the scene
 	PhysBody* Enemies[MAX_ENTITIES] = { nullptr };
 

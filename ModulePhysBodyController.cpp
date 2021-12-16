@@ -4,6 +4,7 @@
 
 PyhsBodyController::PyhsBodyController(Application* app, bool start_enabled)
 {
+
 }
 
 PyhsBodyController::~PyhsBodyController()
@@ -12,6 +13,10 @@ PyhsBodyController::~PyhsBodyController()
 
 update_status PyhsBodyController::PreUpdate()
 {
+
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+		debug = !debug;
+
 	// Remove all colliders scheduled for deletion
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
@@ -63,6 +68,8 @@ update_status PyhsBodyController::PostUpdate()
 
 	}
 	return UPDATE_CONTINUE;
+
+	if (debug) DebugDraw();
 }
 
 bool PyhsBodyController::CleanUp()
@@ -95,4 +102,17 @@ PhysBody* PyhsBodyController::AddPhysBody(int x, int y, int w, int h, int enemy)
 	}
 
 	return ret;
+}
+
+void PyhsBodyController::DebugDraw()
+{
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
+	{
+		// skip empty colliders
+		if (Enemies[i] == nullptr)
+			continue;
+		
+		App->renderer->DrawQuad({ Enemies[i]->GetPositionX(), Enemies[i]->GetPositionY(), Enemies[i]->GetHeight(), Enemies[i]->GetWidth() }, 0, 255, 0, 255);
+
+	}
 }

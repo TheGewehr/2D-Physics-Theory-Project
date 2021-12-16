@@ -65,11 +65,10 @@ void PhysBody::SetWorldPosition(int x, int y)
 	
 }
 
-void PhysBody::SetListener(Module* lis) 
+void PhysBody::SetListener(Module* lis)
 {
 	listener = lis;
 }
-
 
 
 // Physics source code
@@ -87,11 +86,23 @@ bool Physics::Start()
 
 update_status Physics::PreUpdate()
 {
+	p2List_item<PhysBody*>* node = World.getFirst();
+	while (node->next != NULL)
+	{
+		node->data->PreUpdate();
+	}
+
 	return UPDATE_CONTINUE;
 }
 
 update_status Physics::Update()
 {
+	p2List_item<PhysBody*> *node = World.getFirst();
+	while(node->next != NULL)
+	{
+		node->data->Update();
+	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -110,13 +121,23 @@ update_status Physics::PostUpdate()
 		}
 	}
 		
+	p2List_item<PhysBody*>* node = World.getFirst();
+	while (node->next != NULL)
+	{
+		node->data->PostUpdate();
+	}
+
 	if (!debug)
 	{
 		return UPDATE_CONTINUE;
 	}
 	else
 	{
-		// Debug Draw
+		p2List_item<PhysBody*>* node = World.getFirst();
+		while (node->next != NULL)
+		{
+			node->data->DebugDraw();
+		}
 	}
 
 	return UPDATE_CONTINUE;

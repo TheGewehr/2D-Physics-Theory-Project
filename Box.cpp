@@ -86,3 +86,18 @@ void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Modul
 
 	delete b;
 }
+
+void Box::DebugDraw()
+{
+
+}
+
+int Box::GetWidth()
+{
+	return width;
+}
+
+int Box::GetHeight()
+{
+	return	height;
+}

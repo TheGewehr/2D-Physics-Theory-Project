@@ -46,8 +46,9 @@ public:
 	void AddStaticBox(int x,int y, int width, int height, int rotation, Module* lis);
 	void AddKinematicBox(int x, int y, int width, int height, int rotation, Module* lis);
 	void AddDynamicBox(int x, int y, int width, int height, int rotation, Module* lis);
-
-
+	void DebugDraw();
+	int GetWidth();
+	int GetHeight();
 private:
 
 	int width, height; //Pixels

@@ -53,6 +53,7 @@ private:
 	p2List<PhysBody*> World;
 
 
+
 };
 
 class PhysBody 
@@ -68,8 +69,21 @@ public:
 
 	virtual int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
 	int GetId() const;
+
 	int GetPositionX() const;
 	int GetPositionY() const;
+
+	virtual void DebugDraw() {
+	};
+
+	virtual int GetWidth() {
+		return int();
+	};
+
+	virtual int GetHeight() {
+		return int();
+	};
+
 	Vector2D<int> GetPositionVector() const;
 	Module* GetListener() const;
 	void SetListener(Module* lis);
