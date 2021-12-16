@@ -12,6 +12,7 @@
 #include "ModulePlayer.h"
 #include "Physics.h"
 #include "ModuleSceneIntro.h"
+#include "ModulePhysbodyController.h"
 
 class Physics;
 
@@ -25,7 +26,9 @@ public:
 	ModuleAudio* audio;
 	ModulePlayer* player;
 	ModuleSceneIntro* scene_intro;
+	PyhsBodyController* phys_controller;
 	Physics* physics;
+
 
 private:
 

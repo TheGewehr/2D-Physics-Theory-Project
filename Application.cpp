@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "ModulePhysbodyController.h"
 
 Application::Application()
 {
@@ -9,6 +10,7 @@ Application::Application()
 	audio = new ModuleAudio(this, true);
 	player = new ModulePlayer(this);
 	scene_intro = new ModuleSceneIntro(this);
+	phys_controller = new PyhsBodyController(this);
 	physics = new Physics(this);
 
 	// The order of calls is very important!
@@ -17,11 +19,13 @@ Application::Application()
 
 	// Main Modules
 	AddModule(window);
+	AddModule(phys_controller);
 	AddModule(physics);
 	AddModule(renderer);
 	AddModule(textures);
 	AddModule(input);
 	AddModule(audio);
+
 	
 	// Scenes
 	AddModule(scene_intro);

@@ -2,7 +2,13 @@
 #include "PhysBody.h"
 #include "Box.h"
 
+PyhsBodyController::PyhsBodyController(Application* app, bool start_enabled)
+{
+}
 
+PyhsBodyController::~PyhsBodyController()
+{
+}
 
 update_status PyhsBodyController::PreUpdate()
 {
@@ -57,6 +63,21 @@ update_status PyhsBodyController::PostUpdate()
 
 	}
 	return UPDATE_CONTINUE;
+}
+
+bool PyhsBodyController::CleanUp()
+{
+	//app->coll->RemoveColliderType(Collider::Type::ENEMY);
+
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
+	{
+		if (Enemies[i] != nullptr)
+		{
+			delete Enemies[i];
+			Enemies[i] = nullptr;
+		}
+	}
+	return true;
 }
 
 

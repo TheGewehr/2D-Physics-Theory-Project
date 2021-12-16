@@ -12,7 +12,7 @@ class PyhsBodyController : public Module
 public:
 	// Constructor
 
-	PyhsBodyController();
+	PyhsBodyController(Application* app, bool start_enabled = true);
 
 	// Destructor
 	virtual ~PyhsBodyController();
@@ -24,8 +24,6 @@ public:
 	update_status PostUpdate();
 
 	bool CleanUp();
-
-	void StartLvl();
 
 	PhysBody* AddPhysBody(int x, int y, int w, int h, int enemy);
 
