@@ -147,7 +147,7 @@ update_status Physics::PostUpdate()
 bool Physics::CleanUp()
 {
 	LOG(" Stopping the Physics Engyne! ");
-	delete(&World);
+	//delete(&World);
 	return true;
 }
 
