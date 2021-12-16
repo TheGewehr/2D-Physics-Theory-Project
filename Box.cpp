@@ -54,7 +54,6 @@ void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module
 	// Apply rotation to b
 	b->SetListener(lis);
 
-	App->physics->GetWorld().add(b);
 	
 
 	delete b;
@@ -71,8 +70,6 @@ void Box::AddKinematicBox(int x, int y, int width, int height, int rotation, Mod
 	// Apply rotation to b
 	b->SetListener(lis);
 
-	App->physics->GetWorld().add(b);
-
 	delete b;
 }
 
@@ -86,9 +83,6 @@ void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Modul
 	b->SetWorldPosition(x, y);
 	// Apply rotation to b
 	b->SetListener(lis);
-
-
-	App->physics->GetWorld().add(b);
 
 	delete b;
 }
