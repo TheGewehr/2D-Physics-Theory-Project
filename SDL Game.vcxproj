@@ -94,7 +94,6 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Physics.h" />
-    <ClInclude Include="Polygon.h" />
     <ClInclude Include="TheoryDay.h" />
   </ItemGroup>
   <ItemGroup>

@@ -56,5 +56,5 @@ private:
 	Vector2D<int> localPosition;
 
 
-	Vector2D<int> point01, point02, point03, point04;
+	Vector2D<int> point01, point02, point03, point04; // Pixels
 };

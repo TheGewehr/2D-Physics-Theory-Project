@@ -40,6 +40,17 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+
+	int MeterToPixel(float meter)
+	{
+		return (int)(meter * MeterToPixelFUIM);
+	}
+
+	float PixelToMeter(int pixel)
+	{
+		return (float)(pixel * PixelToMeterFUIM);
+	}
+
 private:
 
 	int start;

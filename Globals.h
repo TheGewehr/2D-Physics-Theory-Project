@@ -13,6 +13,11 @@ void log(const char file[], int line, const char* format, ...);
 
 #define FPS 60
 
+#define PixelToMeterFUIM 10.0f
+#define MeterToPixelFUIM 0.1f
+
+
+
 typedef unsigned int uint;
 typedef unsigned char uchar;
 
