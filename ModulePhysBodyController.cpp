@@ -34,7 +34,6 @@ update_status PyhsBodyController::PreUpdate()
 			continue;
 
 		Enemies[i]->PreUpdate();
-
 	}
 
 	return UPDATE_CONTINUE;
@@ -57,7 +56,6 @@ update_status PyhsBodyController::Update(float dt)
 
 update_status PyhsBodyController::PostUpdate()
 {
-
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		// skip empty colliders

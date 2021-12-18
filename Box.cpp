@@ -54,8 +54,6 @@ void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module
 	// Apply rotation to b
 	b->SetListener(lis);
 
-	
-
 	delete b;
 }
 
