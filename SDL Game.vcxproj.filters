@@ -15,11 +15,11 @@
     <Filter Include="Physics Engyne">
       <UniqueIdentifier>{2617a1f1-8b60-471e-b08d-7631fe7bf780}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Physics Engyne\Heather Files">
-      <UniqueIdentifier>{54c5e525-f6fa-458e-8a1f-8cd11e200314}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Physics Engyne\Source Files">
       <UniqueIdentifier>{534b9d9f-bd5f-4852-9fe6-75ee8a759d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics Engyne\Heather Files">
+      <UniqueIdentifier>{54c5e525-f6fa-458e-8a1f-8cd11e200314}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

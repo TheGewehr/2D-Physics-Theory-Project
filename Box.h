@@ -5,6 +5,7 @@
 #include "pisobody.h"
 #include "Application.h"
 #include "Collider.h"
+#include "Collisions.h"
 
 class Box : public PhysBody
 {
@@ -15,8 +16,8 @@ public:
 		width = w;
 		height = h;
 
-		localPosition.x = x;
-		localPosition.y = y;
+		localPosition.x = 0;
+		localPosition.y = 0;
 
 		point01.x = x;
 		point01.y = y;
@@ -52,18 +53,19 @@ public:
 
 		// Aerodynamics stuff
 		surface=1; // Effective wet surface
-		cl=1; // Lift coefficient
-		cd=1; // Drag coefficient
+		cl = 1; // Lift coefficient
+		cd.x = 1; // Drag coefficient
+		cd.y = 1.0f;
 
 		id=-1;
 		worldPosition.x = App->MeterToPixel(position.x); // Pixels
 		worldPosition.y = App->MeterToPixel(position.y);
-		objectType = staticBody;
+		objectType = dynamicBody;
 
 		listener = nullptr;
 
 		// HITBOX
-		
+		App->coll->AddCollider({ worldPosition.x, worldPosition.y, width, height }, Collider::Type::PLAYER, this, App->physics);
 	}
 
 	Box() : PhysBody()
@@ -99,8 +101,9 @@ public:
 
 		// Aerodynamics stuff
 		surface = 1; // Effective wet surface
-		cl = 1; // Lift coefficient
-		cd = 1; // Drag coefficient
+		cl = 0.5; // Lift coefficient
+		cd.x = 1;
+		cd.y = 0.5; // Drag coefficient
 
 		id = -1;
 		worldPosition.x = App->MeterToPixel(position.x); // Pixels
@@ -108,6 +111,7 @@ public:
 		objectType = staticBody;
 
 		listener = nullptr;
+	
 	};
 
 	~Box() {};
@@ -152,7 +156,7 @@ private:
 	// Aerodynamics stuff
 	float surface; // Effective wet surface
 	float cl; // Lift coefficient
-	float cd; // Drag coefficient
+	Vector2D<float> cd; // Drag coefficient
 
 	int id;
 	Vector2D<int> worldPosition; // Pixels

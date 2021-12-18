@@ -35,7 +35,7 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
-	App->physics->AddBoxToWorld(10, 10, 10, 10);
+	
 
 	return UPDATE_CONTINUE;
 }
