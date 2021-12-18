@@ -8,7 +8,7 @@
 #include "SDL/include/SDL_Scancode.h"
 #include "iostream"
 
-Collisions::Collisions() : Module()
+Collisions::Collisions(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 
 	//name.Create("collisions");
@@ -211,11 +211,15 @@ bool Collisions::CleanUp()
 	return true;
 }
 
+void Collisions::OnCollision(PhysBody* c1, PhysBody* c2)
+{
+}
+
 //void Collisions::OnCollision(Collider* c1, Collider* c2) // adaptar a physbody?
 //{
 //}
 
-Collider* Collisions::AddCollider(SDL_Rect rect, Collider::Type type, Enemy* point_, Module* listener)
+Collider* Collisions::AddCollider(SDL_Rect rect, Collider::Type type, PhysBody* point_, Module* listener)
 {
 	Collider* ret = nullptr;
 

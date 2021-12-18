@@ -1,6 +1,6 @@
 #include "Collider.h"
 #include "Module.h"
-//#include "Enemy.h"
+#include "pisobody.h"
 
 #include "SDL/include/SDL.h"
 
@@ -9,7 +9,7 @@ Collider::Collider(SDL_Rect rectangle, Type type, Module* listener) : rect(recta
 	listeners[0] = listener;
 }
 
-Collider::Collider(SDL_Rect rectangle, Type type, Enemy* point_, Module* listener) : rect(rectangle), type(type)
+Collider::Collider(SDL_Rect rectangle, Type type, PhysBody* point_, Module* listener) : rect(rectangle), type(type)
 {
 	listeners[0] = listener;
 	point = point_;

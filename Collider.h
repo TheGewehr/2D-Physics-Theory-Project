@@ -5,7 +5,7 @@
 
 #define MAX_LISTENERS 8
 
-class Enemy;
+class PhysBody;
 class Module;
 
 struct Collider
@@ -27,7 +27,7 @@ struct Collider
 
 	//Methods
 	Collider(SDL_Rect rectangle, Type type, Module* listener = nullptr);
-	Collider(SDL_Rect rectangle, Type type, Enemy* point_, Module* listener = nullptr);
+	Collider(SDL_Rect rectangle, Type type, PhysBody* point_, Module* listener = nullptr);
 
 	void SetPos(int x, int y);
 
@@ -40,7 +40,7 @@ struct Collider
 	bool pendingToDelete = false;
 	Type type;
 	Module* listeners[MAX_LISTENERS] = { nullptr };
-	Enemy* point;
+	PhysBody* point;
 };
 
 

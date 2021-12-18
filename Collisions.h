@@ -13,7 +13,7 @@ class Collisions : public Module
 public:
 	// Constructor
 	// Fills all collision matrix data
-	Collisions();
+	Collisions(Application* app, bool start_enabled = true);
 
 	// Destructor
 	~Collisions();
@@ -34,10 +34,10 @@ public:
 	// Removes all existing colliders
 	bool CleanUp() override;
 
-	//void OnCollision(PhysBody* c1, PhysBody* c2) override; // adaptar la definicion a physbody o añadir un collider a box?
+	void OnCollision(PhysBody* c1, PhysBody* c2) override; // adaptar la definicion a physbody o añadir un collider a box?
 
 	// Adds a new collider to the list
-	Collider* AddCollider(SDL_Rect rect, Collider::Type type, Enemy* point_ = nullptr, Module* listener = nullptr);
+	Collider* AddCollider(SDL_Rect rect, Collider::Type type, PhysBody* point_ = nullptr, Module* listener = nullptr);
 
 	// Removes the collider memory and removes it from the colliders array
 	void RemoveCollider(Collider* collider);

@@ -4,7 +4,7 @@
 #include "Physics.h"
 #include "pisobody.h"
 #include "Application.h"
-
+#include "Collider.h"
 
 class Box : public PhysBody
 {
@@ -61,6 +61,9 @@ public:
 		objectType = staticBody;
 
 		listener = nullptr;
+
+		// HITBOX
+		
 	}
 
 	Box() : PhysBody()
@@ -130,6 +133,7 @@ private:
 	int width, height; //Pixels
 	bool shouldCollide;
 
+	Collider* hitbox;
 
 	Vector2D<int> localPosition;
 	Vector2D<float> position;

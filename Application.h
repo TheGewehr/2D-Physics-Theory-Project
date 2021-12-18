@@ -16,11 +16,14 @@
 #include "Timer.h"
 #include "PerfTimer.h"
 
+
+class Collisions;
 class Physics;
 
 class Application
 {
 public:
+
 	ModuleRender* renderer;
 	ModuleWindow* window;
 	ModuleTextures* textures;
@@ -30,6 +33,7 @@ public:
 	ModuleSceneIntro* scene_intro;
 	PyhsBodyController* phys_controller;
 	Physics* physics;
+	Collisions* coll;
 
 
 

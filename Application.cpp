@@ -2,7 +2,7 @@
 #include "ModulePhysbodyController.h"
 #include "Timer.h"
 #include "PerfTimer.h"
-
+#include "Collisions.h"
 
 Application::Application()
 {
@@ -17,6 +17,7 @@ Application::Application()
 	scene_intro = new ModuleSceneIntro(this);
 	phys_controller = new PyhsBodyController(this);
 	physics = new Physics(this);
+	coll = new Collisions(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -30,6 +31,7 @@ Application::Application()
 	AddModule(textures);
 	AddModule(input);
 	AddModule(audio);
+	AddModule(coll);
 
 	
 	// Scenes
