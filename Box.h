@@ -25,6 +25,39 @@ public:
 		point04.y = y - h;
 
 		shouldCollide = true;
+
+		// Position
+	// You could also use an array/vector
+
+		position.x = 0;
+		position.y = 0;
+		// Velocity
+
+		velocity.x = 0;
+
+		velocity.y = 0;
+		// Acceleration
+
+		acceleration.x = 0;
+		acceleration.y = 0;
+		// Force (total) applied to the ball
+
+		force.x = 0;
+		force.y = 0;
+		// Mass
+		mass = 1;
+
+		// Aerodynamics stuff
+		surface=1; // Effective wet surface
+		cl=1; // Lift coefficient
+		cd=1; // Drag coefficient
+
+		id=-1;
+		worldPosition.x = App->MeterToPixel(position.x); // Pixels
+		worldPosition.y = App->MeterToPixel(position.y);
+		objectType = staticBody;
+
+		listener = nullptr;
 	}
 
 	Box()
@@ -36,6 +69,39 @@ public:
 		localPosition.y = 0;
 
 		shouldCollide = true;
+
+		// Position
+// You could also use an array/vector
+
+		position.x = 0;
+		position.y = 0;
+		// Velocity
+
+		velocity.x = 0;
+
+		velocity.y = 0;
+		// Acceleration
+
+		acceleration.x = 0;
+		acceleration.y = 0;
+		// Force (total) applied to the ball
+
+		force.x = 0;
+		force.y = 0;
+		// Mass
+		mass = 1;
+
+		// Aerodynamics stuff
+		surface = 1; // Effective wet surface
+		cl = 1; // Lift coefficient
+		cd = 1; // Drag coefficient
+
+		id = -1;
+		worldPosition.x = App->MeterToPixel(position.x); // Pixels
+		worldPosition.y = App->MeterToPixel(position.y);
+		objectType = staticBody;
+
+		listener = nullptr;
 	};
 
 	~Box() {};

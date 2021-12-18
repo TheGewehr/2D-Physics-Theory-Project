@@ -78,6 +78,7 @@ void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Modul
 void Box::DebugDraw()
 {
 	//App->renderer->DrawQuad({App->});
+
 }
 
 int Box::GetWidth()

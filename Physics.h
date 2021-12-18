@@ -157,7 +157,8 @@ public:
 
 	bool pendingToDelete = false;
 
-private:
+public:
+
 	// Position
 	// You could also use an array/vector
 	

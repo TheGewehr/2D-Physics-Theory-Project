@@ -127,7 +127,7 @@ update_status Physics::PostUpdate()
 	{
 		node->data->PostUpdate();
 	}
-
+	
 	if (!debug)
 	{
 		return UPDATE_CONTINUE;
