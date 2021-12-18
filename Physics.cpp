@@ -30,9 +30,10 @@ update_status Physics::PreUpdate()
 	p2List_item<PhysBody*>* node = World.getFirst();
 	if (node != NULL)
 	{
-		while (node->next != NULL)
+		while (node != NULL)
 		{
 			node->data->PreUpdate();
+			node = node->next;
 		}
 	}
 	return UPDATE_CONTINUE;
@@ -43,9 +44,10 @@ update_status Physics::Update(float dt)
 	p2List_item<PhysBody*> *node = World.getFirst();
 	if (node != nullptr)
 	{
-		while (node->next != NULL)
+		while (node != NULL)
 		{
 			node->data->Update(dt);
+			node = node->next;
 		}
 	}
 	return UPDATE_CONTINUE;
@@ -67,11 +69,14 @@ update_status Physics::PostUpdate()
 	}
 		
 	p2List_item<PhysBody*>* node = World.getFirst();
+	
 	if (node != nullptr)
 	{
-		while (node->next != NULL)
+		
+		while (node != NULL)
 		{
 			node->data->PostUpdate();
+			node = node->next;
 		}
 	}
 
