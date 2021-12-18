@@ -115,31 +115,66 @@ public:
 
 
 		p2List_item<PhysBody*>* node = App->physics->GetWorld().getFirst();
+
 		while (node->next != NULL)
 		{
 			if (node->data->objectType == dynamicBody)
 			{
 
 				//	// Compute Gravity force
-				//float fgx = node->data.mass * 0.0;
-				//double fgy = ball.mass * -10.0; // Let's assume gravity is constant and downwards
+				float fgx = node->data->mass * 0.0f;
+				float fgy = node->data->mass * -9.81f; // Let's assume gravity is constant and downwards
 				//
 				//// Add gravity force to the total accumulated force of the ball
-				//ball.fx += fgx;
-				//ball.fy += fgy;
-				//
+				node->data->force.x += fgx;
+				node->data->force.y += fgy;
+			
+				
+				
 				//// Compute Aerodynamic Lift & Drag forces
 				//double speed = ball.speed(ball.vx - atmosphere.windx, ball.vy - atmosphere.windy);
+				float speed = node->data->velocity.x  + node->data->velocity.y; // There is no wind
 				//double fdrag = 0.5 * atmosphere.density * speed * speed * ball.surface * ball.cd;
+				float fdrag = 0.5f * 1.2041f * speed * speed * App->PixelToMeter(node->data->GetHeight()) * node->data->cd;
 				//double flift = 0.5 * atmosphere.density * speed * speed * ball.surface * ball.cl;
+				float flift = 0.5 * 1.2041f * speed * speed * App->PixelToMeter(node->data->GetWidth()) * node->data->cl;
 				//double fdx = -fdrag; // Let's assume Drag is aligned with x-axis (in your game, generalize this)
-				//double fdy = flift; // Let's assume Lift is perpendicular with x-axis (in your game, generalize this)
+				float fdx = -fdrag; // Let's assume Drag is aligned with x-axis (in your game, generalize this)
+				float fdy = flift; // Let's assume Lift is perpendicular with x-axis (in your game, generalize this)
 				//
-				//// Add gravity force to the total accumulated force of the ball
-				//ball.fx += fdx;
-				//ball.fy += fdy;
+				//// Add aerodynamics force to the total accumulated force of the ball
+				node->data->force.x += fdx;
+				node->data->force.y += fdy;
 				//
 
+
+				node->data->acceleration.x = node->data->force.x / node->data->mass;
+				node->data->acceleration.y = node->data->force.y / node->data->mass;
+
+
+
+
+
+
+				//// Step #3: Integrate --> from accel to new velocity & new position. 
+				//// We will use the 2nd order "Velocity Verlet" method for integration.
+				//// You can also move this code into a subroutine: integrator_velocity_verlet(ball, dt);
+				node->data->position.x += node->data->velocity.x * dt + 0.5f * node->data->acceleration.x * dt * dt;
+				node->data->position.y += node->data->velocity.y * dt + 0.5f * node->data->acceleration.y * dt * dt;
+				node->data->velocity.x += node->data->acceleration.x * dt;
+				node->data->velocity.y += node->data->acceleration.y * dt;
+				//
+
+
+				//// Step #4: solve collisions
+				//if (ball.y < ground.y)
+				//{
+				//	// For now, just stop the ball when it reaches the ground.
+				//	ball.vx = ball.vy = 0.0;
+				//	ball.ax = ball.ay = 0.0;
+				//	ball.fx = ball.fy = 0.0;
+				//	ball.physics_enabled = false;
+				//}
 			}
 			else if (node->data->objectType == staticBody)
 			{
