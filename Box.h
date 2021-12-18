@@ -2,6 +2,7 @@
 
 #include "module.h"
 #include "Physics.h"
+#include "pisobody.h"
 
 class Box : public PhysBody
 {
