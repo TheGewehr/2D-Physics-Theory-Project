@@ -156,7 +156,7 @@ update_status Collisions::PostUpdate()
 
 void Collisions::DebugDraw()
 {
-	Uint8 alpha = 80;
+	Uint8 alpha = 200;
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] == nullptr)
@@ -171,10 +171,10 @@ void Collisions::DebugDraw()
 			App->renderer->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
 		case Collider::Type::PLAYER: // green
-			App->renderer->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			App->renderer->DrawQuad(colliders[i]->rect, 255, 0, 0, 255);
 			break;
 		case Collider::Type::PLAT: // red
-			App->renderer->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+			App->renderer->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
 			break;
 		case Collider::Type::CAM: // yellow
 			App->renderer->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);

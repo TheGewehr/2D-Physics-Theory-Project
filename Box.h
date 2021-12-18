@@ -54,7 +54,7 @@ public:
 		// Aerodynamics stuff
 		surface=1; // Effective wet surface
 		cl = 1; // Lift coefficient
-		cd.x = 1; // Drag coefficient
+		cd.x = 1.5f; // Drag coefficient
 		cd.y = 1.0f;
 
 		id=-1;
@@ -65,7 +65,7 @@ public:
 		listener = nullptr;
 
 		// HITBOX
-		App->coll->AddCollider({ worldPosition.x, worldPosition.y, width, height }, Collider::Type::PLAYER, this, App->physics);
+		hitbox = App->coll->AddCollider({ (int)(worldPosition.x - width*0.5), (int)(worldPosition.y - height*0.5), width, height }, Collider::Type::PLAYER, this, App->physics);
 	}
 
 	Box() : PhysBody()

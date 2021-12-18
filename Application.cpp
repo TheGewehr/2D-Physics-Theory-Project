@@ -32,13 +32,12 @@ Application::Application()
 	AddModule(input);
 	AddModule(audio);
 	AddModule(coll);
-
-	
 	// Scenes
 	AddModule(scene_intro);
 	
 	// Player
 	AddModule(player);
+	
 
 	ptimer = new PerfTimer();
 	frameDuration = new PerfTimer();

@@ -180,12 +180,11 @@ update_status Box::Update(float dt)
 	{
 		//	// Compute Gravity force
 		float fgx = mass * 0.0f;
-		float fgy = mass * 0.0000000000000001f; // Let's assume gravity is constant and downwards
+		float fgy = mass * 0.00000000000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
 		//
 		//// Add gravity force to the total accumulated force of the ball
 		force.x += fgx;
 		force.y += fgy;
-
 
 
 		//// Compute Aerodynamic Lift & Drag forces
@@ -244,13 +243,16 @@ update_status Box::Update(float dt)
 		LOG(" Type of object error");
 	}
 	// Setting hitbox to real position
-	if (hitbox != NULL) hitbox->SetPos(worldPosition.x, worldPosition.y);
+	if (hitbox != NULL)
+	{
+		hitbox->SetPos((int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5));
+	}
 
 	return UPDATE_CONTINUE;
 }
 
 update_status Box::PostUpdate()
 {
-	App->renderer->DrawQuad({ worldPosition.x, worldPosition.y, width, height }, 0, 255, 0, 255);
+	App->renderer->DrawQuad({ (int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5), width, height }, 0, 255, 0, 200);
 	return UPDATE_CONTINUE;
 }

@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleSceneIntro.h"
 #include "ModulePhysbodyController.h"
+#include "Collisions.h"
 
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -21,6 +22,8 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 	App->player->SetPlayerLifes(3);
 
+	App->coll->AddCollider({ 100, 100, 100, 100 }, Collider::Type::PLAT, 0, this);
+
 	return ret;
 }
 
@@ -35,7 +38,6 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
-	
-
+	App->renderer->DrawQuad({ 100, 100, 100, 100 }, 0, 255, 0, 200);
 	return UPDATE_CONTINUE;
 }
