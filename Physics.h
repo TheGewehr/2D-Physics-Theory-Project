@@ -17,8 +17,8 @@
 enum ObjType
 {
 	 staticBody = 0,
-	 kinematicBody,
-	 dynamicBody 
+	 
+	 dynamicBody = 1
 
 };
 
@@ -31,6 +31,7 @@ public:
 	
 	
 	Physics(Application* app, bool start_enabled = true) {};
+	Physics() {};
 
 	~Physics();
 
@@ -57,7 +58,7 @@ private:
 
 };
 
-class PhysBody 
+class PhysBody : public Physics
 {
 public:
 	PhysBody() : listener(nullptr) //, body(NULL)
@@ -92,10 +93,12 @@ public:
 	void SetType(ObjType type);
 	void SetWorldPosition(int x, int y);
 
-	void PreUpdate() {
+	update_status PreUpdate() {
 
+
+		return UPDATE_CONTINUE;
 	}
-	void Update() {
+	update_status Update() {
 		//// Step #0: Reset total acceleration and total accumulated force of the ball (clear old values)
 		//ball.fx = ball.fy = 0.0;
 		//ball.ax = ball.ay = 0.0;
@@ -145,9 +148,10 @@ public:
 		//	ball.fx = ball.fy = 0.0;
 		//	ball.physics_enabled = false;
 		//}
+		return UPDATE_CONTINUE;
 	}
-	void PostUpdate() {
-
+	update_status PostUpdate() {
+		return UPDATE_CONTINUE;
 	}
 
 

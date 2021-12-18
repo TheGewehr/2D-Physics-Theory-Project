@@ -68,9 +68,6 @@
     <ClInclude Include="Box.h">
       <Filter>Physics Engyne\Heather Files</Filter>
     </ClInclude>
-    <ClInclude Include="Circle.h">
-      <Filter>Physics Engyne\Heather Files</Filter>
-    </ClInclude>
     <ClInclude Include="Physics.h">
       <Filter>Physics Engyne\Heather Files</Filter>
     </ClInclude>

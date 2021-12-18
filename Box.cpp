@@ -59,19 +59,7 @@ void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module
 	delete b;
 }
 
-void Box::AddKinematicBox(int x, int y, int width, int height, int rotation, Module* lis)
-{
-	Box* b = new Box;
 
-	b->SetDimensions(width, height);
-	b->SetType(kinematicBody);
-	b->shouldCollide = true;
-	b->SetWorldPosition(x, y);
-	// Apply rotation to b
-	b->SetListener(lis);
-
-	delete b;
-}
 
 void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Module* lis)
 {
@@ -89,7 +77,7 @@ void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Modul
 
 void Box::DebugDraw()
 {
-
+	//App->renderer->DrawQuad({App->});
 }
 
 int Box::GetWidth()
