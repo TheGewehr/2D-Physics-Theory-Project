@@ -25,9 +25,9 @@ public:
 	bool Start();
 	update_status Update(float dt);
 	bool CleanUp();
+	void SetPlayerLifes(int l);
 
 public:
-
 	Object ball;
 	Object flipper1;
 	Object flipper2;
@@ -43,4 +43,7 @@ public:
 	PhysBody* flipper_up2_wheel;
 
 	PhysBody* sensor1;
+
+private:
+	int lifes;
 };

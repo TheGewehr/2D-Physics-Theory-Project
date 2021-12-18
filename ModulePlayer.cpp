@@ -17,6 +17,11 @@ bool ModulePlayer::Start()
 	return true;
 }
 
+void ModulePlayer::SetPlayerLifes(int l)
+{
+	lifes = l;
+}
+
 // Unload assets
 bool ModulePlayer::CleanUp()
 {
@@ -30,6 +35,3 @@ update_status ModulePlayer::Update(float dt)
 {
 	return UPDATE_CONTINUE;
 }
-
-
-

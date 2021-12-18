@@ -52,7 +52,6 @@ public:
 	bool CleanUp();
 
 public:
-
 	SDL_Texture* graphics;
 	PhysBody* background;
 

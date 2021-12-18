@@ -19,6 +19,7 @@ bool ModuleSceneIntro::Start()
 	bool ret = true;
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
+	App->player->SetPlayerLifes(3);
 
 	return ret;
 }
