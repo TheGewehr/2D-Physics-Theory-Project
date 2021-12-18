@@ -10,6 +10,10 @@
 
 // Physics source code
 
+Physics::Physics(Application* app, bool start_enabled) : Module(app, start_enabled)
+{
+}
+
 Physics::~Physics()
 {
 }
@@ -17,29 +21,33 @@ Physics::~Physics()
 bool Physics::Start()
 {
 	LOG(" Starting the Physics Engyne! ");
-
+	AddBoxToWorld(100, 100, 100, 100);
 	return true;
 }
 
 update_status Physics::PreUpdate()
 {
 	p2List_item<PhysBody*>* node = World.getFirst();
-	while (node->next != NULL)
+	if (node != NULL)
 	{
-		node->data->PreUpdate();
+		while (node->next != NULL)
+		{
+			node->data->PreUpdate();
+		}
 	}
-
 	return UPDATE_CONTINUE;
 }
 
 update_status Physics::Update(float dt)
 {
 	p2List_item<PhysBody*> *node = World.getFirst();
-	while(node->next != NULL)
+	if (node != nullptr)
 	{
-		node->data->Update(dt);
+		while (node->next != NULL)
+		{
+			node->data->Update(dt);
+		}
 	}
-
 	return UPDATE_CONTINUE;
 }
 
@@ -59,11 +67,14 @@ update_status Physics::PostUpdate()
 	}
 		
 	p2List_item<PhysBody*>* node = World.getFirst();
-	while (node->next != NULL)
+	if (node != nullptr)
 	{
-		node->data->PostUpdate();
+		while (node->next != NULL)
+		{
+			node->data->PostUpdate();
+		}
 	}
-	
+
 	if (!debug)
 	{
 		return UPDATE_CONTINUE;
@@ -71,9 +82,12 @@ update_status Physics::PostUpdate()
 	else
 	{
 		p2List_item<PhysBody*>* node = World.getFirst();
-		while (node->next != NULL)
+		if (node != nullptr)
 		{
-			node->data->DebugDraw();
+			while (node->next != NULL)
+			{
+				node->data->DebugDraw();
+			}
 		}
 	}
 

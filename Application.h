@@ -82,3 +82,4 @@ private:
 
 	void AddModule(Module* mod);
 };
+extern Application* App;

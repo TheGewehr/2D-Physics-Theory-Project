@@ -18,7 +18,6 @@
 enum ObjType
 {
 	 staticBody = 0,
-	 
 	 dynamicBody = 1
 
 };
@@ -31,7 +30,8 @@ class Physics : public Module
 public:
 	
 	
-	Physics(Application* app, bool start_enabled = true) {};
+	Physics(Application* app, bool start_enabled = true);
+
 	Physics() {};
 
 	~Physics();
@@ -39,9 +39,11 @@ public:
 	
 
 	bool Start();
+
 	update_status PreUpdate();
 	update_status Update(float dt);
 	update_status PostUpdate();
+
 	bool CleanUp();
 	bool GetDebug();
 	void SetDebug(bool d);

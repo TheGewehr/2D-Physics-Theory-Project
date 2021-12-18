@@ -1,5 +1,17 @@
 #include "pisobody.h"
 
+PhysBody::PhysBody(Application* app, bool start_enabled)
+{
+}
+
+PhysBody::PhysBody(int x, int y, int w, int h)
+{
+}
+
+PhysBody::PhysBody()
+{
+}
+
 float PhysBody::GetRotation() const
 {
 	return float();
