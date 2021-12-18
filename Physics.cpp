@@ -118,7 +118,7 @@ p2List<PhysBody*> Physics::GetWorld()
 
 void Physics::AddBoxToWorld(int x, int y, int w, int h)
 {
-	Box box(x, y, w, h);
-	World.add(&box);
+	Box * a = new Box(x, y, w, h);
+	World.add(a);
 }
 

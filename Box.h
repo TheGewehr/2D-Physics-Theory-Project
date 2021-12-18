@@ -32,8 +32,8 @@ public:
 		// Position
 	// You could also use an array/vector
 
-		position.x = 0;
-		position.y = 0;
+		position.x = x;
+		position.y = y;
 		// Velocity
 
 		velocity.x = 0;
@@ -239,7 +239,6 @@ private:
 	int width, height; //Pixels
 	bool shouldCollide;
 
-	
 
 	Vector2D<int> localPosition;
 
