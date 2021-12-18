@@ -96,7 +96,7 @@ update_status Application::Update()
 	update_status ret = UPDATE_CONTINUE;
 	p2List_item<Module*>* item = list_modules.getFirst();
 
-	start = SDL_GetTicks();
+	
 
 	while(item != NULL && ret == UPDATE_CONTINUE)
 	{
