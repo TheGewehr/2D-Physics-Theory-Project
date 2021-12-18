@@ -32,7 +32,7 @@ bool ModuleSceneIntro::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleSceneIntro::Update()
+update_status ModuleSceneIntro::Update(float dt)
 {
 	App->phys_controller->AddPhysBody(0, 0, 10, 10, 1);
 

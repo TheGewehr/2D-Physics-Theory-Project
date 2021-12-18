@@ -13,6 +13,8 @@
 #include "Physics.h"
 #include "ModuleSceneIntro.h"
 #include "ModulePhysbodyController.h"
+#include "Timer.h"
+#include "PerfTimer.h"
 
 class Physics;
 
@@ -34,6 +36,25 @@ public:
 private:
 
 	p2List<Module*> list_modules;
+
+
+	PerfTimer* ptimer;
+	PerfTimer* frameDuration;
+
+	Timer startupTime;
+	Timer frameTime;
+	Timer lastSecFrameTime;
+
+	int frameCount = 0;
+	int framesPerSecond = 0;
+	int lastSecFrameCount = 0;
+
+	float averageFps = 0.0f;
+	float dt = 0.0f;
+
+
+
+	int maxFrameRate = 0;
 
 public:
 

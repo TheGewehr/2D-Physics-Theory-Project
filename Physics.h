@@ -39,7 +39,7 @@ public:
 
 	bool Start();
 	update_status PreUpdate();
-	update_status Update();
+	update_status Update(float dt);
 	update_status PostUpdate();
 	bool CleanUp();
 	bool GetDebug();
@@ -98,7 +98,7 @@ public:
 
 		return UPDATE_CONTINUE;
 	}
-	update_status Update() {
+	update_status Update(float dt) {
 		//// Step #0: Reset total acceleration and total accumulated force of the ball (clear old values)
 		//ball.fx = ball.fy = 0.0;
 		//ball.ax = ball.ay = 0.0;

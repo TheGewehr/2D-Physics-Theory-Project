@@ -41,7 +41,7 @@ update_status PyhsBodyController::PreUpdate()
 }
 
 
-update_status PyhsBodyController::Update()
+update_status PyhsBodyController::Update(float dt)
 {
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
@@ -49,7 +49,7 @@ update_status PyhsBodyController::Update()
 		if (Enemies[i] == nullptr)
 			continue;
 
-		Enemies[i]->Update();
+		Enemies[i]->Update(dt);
 	}
 
 	return UPDATE_CONTINUE;

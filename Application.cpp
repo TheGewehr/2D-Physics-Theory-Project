@@ -1,8 +1,13 @@
 #include "Application.h"
 #include "ModulePhysbodyController.h"
+#include "Timer.h"
+#include "PerfTimer.h"
+
 
 Application::Application()
 {
+	frameCount = 0;
+
 	renderer = new ModuleRender(this);
 	window = new ModuleWindow(this);
 	textures = new ModuleTextures(this);
@@ -32,6 +37,10 @@ Application::Application()
 	
 	// Player
 	AddModule(player);
+
+	ptimer = new PerfTimer();
+	frameDuration = new PerfTimer();
+	
 }
 
 Application::~Application()
@@ -75,6 +84,15 @@ bool Application::Init()
 // Call PreUpdate, Update and PostUpdate on all modules
 update_status Application::Update()
 {
+	frameCount++;
+	lastSecFrameCount++;
+
+
+	dt = frameDuration->ReadMs();
+	frameDuration->Start();
+
+	start = SDL_GetTicks();
+
 	update_status ret = UPDATE_CONTINUE;
 	p2List_item<Module*>* item = list_modules.getFirst();
 
@@ -92,7 +110,7 @@ update_status Application::Update()
 	while(item != NULL && ret == UPDATE_CONTINUE)
 	{
 		if(item->data->IsEnabled())
-  			ret = item->data->Update();
+  			ret = item->data->Update(dt);
 		item = item->next;
 	}
 
@@ -102,8 +120,20 @@ update_status Application::Update()
 	{
 		if(item->data->IsEnabled())
 			ret = item->data->PostUpdate();
+	
 		item = item->next;
 	}
+
+	float secondsSinceStartup = startupTime.ReadSec();
+
+	if (lastSecFrameTime.Read() > 1000) {
+		lastSecFrameTime.Start();
+		framesPerSecond = lastSecFrameCount;
+		lastSecFrameCount = 0;
+		averageFps = (averageFps + framesPerSecond) / 2;
+	}
+
+
 
 	if ((1000 / FPS) > SDL_GetTicks() - start) SDL_Delay(1000 / FPS - (SDL_GetTicks() - start));
 

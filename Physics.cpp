@@ -96,12 +96,12 @@ update_status Physics::PreUpdate()
 	return UPDATE_CONTINUE;
 }
 
-update_status Physics::Update()
+update_status Physics::Update(float dt)
 {
 	p2List_item<PhysBody*> *node = World.getFirst();
 	while(node->next != NULL)
 	{
-		node->data->Update();
+		node->data->Update(dt);
 	}
 
 	return UPDATE_CONTINUE;
