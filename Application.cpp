@@ -27,11 +27,12 @@ Application::Application()
 	AddModule(window);
 	AddModule(phys_controller);
 	AddModule(physics);
+	AddModule(coll);
 	AddModule(renderer);
 	AddModule(textures);
 	AddModule(input);
 	AddModule(audio);
-	AddModule(coll);
+	
 	// Scenes
 	AddModule(scene_intro);
 	

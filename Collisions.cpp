@@ -171,10 +171,11 @@ void Collisions::DebugDraw()
 			App->renderer->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
 			break;
 		case Collider::Type::PLAYER: // green
-			App->renderer->DrawQuad(colliders[i]->rect, 255, 0, 0, 255);
+			App->renderer->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
 			break;
 		case Collider::Type::PLAT: // red
 			App->renderer->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+			App->renderer->DrawQuad({ 100, 100, 100, 100 }, 255, 0, 0, alpha);
 			break;
 		case Collider::Type::CAM: // yellow
 			App->renderer->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
@@ -224,9 +225,6 @@ Collider* Collisions::AddCollider(SDL_Rect rect, Collider::Type type, PhysBody* 
 	Collider* ret = nullptr;
 
 	if (point_ == nullptr) {
-
-
-
 
 		for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		{

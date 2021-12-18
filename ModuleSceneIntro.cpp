@@ -38,6 +38,6 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
-	App->renderer->DrawQuad({ 100, 100, 100, 100 }, 0, 255, 0, 200);
+
 	return UPDATE_CONTINUE;
 }
