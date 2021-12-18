@@ -95,10 +95,22 @@ public:
 
 	update_status PreUpdate() {
 
+		p2List_item<PhysBody*>* node = App->physics->GetWorld().getFirst();
+
+		while (node->next != NULL)
+		{
+			node->data->acceleration.x = 0.0f;
+			node->data->acceleration.y = 0.0f;
+			node->data->force.x = 0.0f;
+			node->data->force.y = 0.0f;
+		}
+
 
 		return UPDATE_CONTINUE;
 	}
+
 	update_status Update(float dt) {
+
 		//// Step #0: Reset total acceleration and total accumulated force of the ball (clear old values)
 		//ball.fx = ball.fy = 0.0;
 		//ball.ax = ball.ay = 0.0;
