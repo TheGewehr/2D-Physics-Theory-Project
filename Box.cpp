@@ -40,7 +40,7 @@ void Box::SetDimensions(int x, int y) // In pixels
 	f.x = (0.5 * width);
 	f.y = (0.5 * height);
 
-	point03 = localPosition.operator+(f);
+	point04 = localPosition.operator+(f);
 }
 
 void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module* lis)
@@ -75,7 +75,7 @@ void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Modul
 
 void Box::DebugDraw()
 {
-	//App->renderer->DrawQuad({App->});
+	App->renderer->DrawQuad({point01.x,point01.y,width,height},200,0,0);
 
 }
 

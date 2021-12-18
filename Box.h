@@ -28,7 +28,7 @@ public:
 		shouldCollide = true;
 
 		// Position
-	// You could also use an array/vector
+		// You could also use an array/vector
 
 		position.x = 0;
 		position.y = 0;
@@ -72,7 +72,7 @@ public:
 		shouldCollide = true;
 
 		// Position
-// You could also use an array/vector
+        // You could also use an array/vector
 
 		position.x = 0;
 		position.y = 0;
