@@ -9,6 +9,8 @@
 #include "moduleaudio.h"
 #include "pisobody.h"
 
+class Box;
+
 class Enemy : public Module
 {
 public:
@@ -24,8 +26,8 @@ public:
 private:
 	int lifes;
 	SDL_Texture* graphic;
-	PhysBody* enemyBox;
-
+	Box* enemyBox;
+	int enemy_int;
 	uint spawnBullet_fx;
 
 };

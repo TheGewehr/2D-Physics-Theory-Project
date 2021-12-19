@@ -5,7 +5,8 @@
 #include "pisobody.h"
 #include "moduletextures.h"
 #include "Collisions.h"
-
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -30,9 +31,11 @@ bool ModuleSceneIntro::Start()
 
 	App->physics->AddBoxToWorld(0, 0, 100, 2500, 0, 0, 2);
 
+
 	App->physics->AddBoxToWorld(0, 0, 100, 2500, 0, 0, 2);
 
 	App->physics->AddBoxToWorld(1500, 0, 100, 2500, 0, 0, 2);
+
 	
 
 	//App->audio->PlayMusic("worms/Audio/Thomas_the_Dank_Engine_SFM_Music_Video-lzmWzXLPa6I.ogg");
@@ -62,15 +65,19 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
+	// Fijarse bien en el orden
 	App->renderer->Blit(background,0,0 );
+	App->physics->Draw();
 	App->renderer->Blit(wall01,0,0);
 	App->renderer->Blit(wall01, 1500, 0);
 	App->renderer->Blit(wall02, 0,0);
 	
+
 	//App->renderer->Blit(win_Screen,0,0 );
 	//App->renderer->Blit(loose_Screen,0,0 );
 
-	App->physics->Draw();
+
+	
 	
 
 	return UPDATE_CONTINUE;
