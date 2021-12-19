@@ -25,10 +25,10 @@ bool Enemy::Start()
 
 
 	lifes = 3;
-	//graphic = App->textures->Load("worms/weapons/Grenade.png");
+	graphic = App->textures->Load("worms/weapons/dorito.png");
 
 
-	enemyBox;
+	
 
 	spawnBullet_fx;
 
@@ -79,13 +79,13 @@ update_status Enemy::Update(float dt)
 	}
 	else //DO NOTHING
 	{
-		enemy->impulseForce.x = 0;
+		enemyBox->impulseForce.x = 0;
 	}
 	return UPDATE_CONTINUE;
 }
 
 update_status Enemy::PostUpdate()
 {
-	//App->renderer->Blit(graphic,);
+	App->renderer->Blit(graphic, enemyBox->worldPosition.x + enemyBox->point01.x, enemyBox->worldPosition.y + enemyBox->point01.y);
 	return UPDATE_CONTINUE;
 }
