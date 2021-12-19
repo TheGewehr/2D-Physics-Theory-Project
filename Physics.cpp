@@ -123,10 +123,13 @@ p2List<PhysBody*> Physics::GetWorld()
 	return World;
 }
 
-void Physics::AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type)
+Box* Physics::AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type)
 {
-
-	World.add(new Box(x, y, w, h, mass_, rc_, type));
+	
+	Box* a = new Box(x, y, w, h, mass_, rc_, type);
+	World.add(a);
+	return a;
+	
 }
 
 void Physics::OnCollision(Collider* body1, Collider* body2)
@@ -134,33 +137,33 @@ void Physics::OnCollision(Collider* body1, Collider* body2)
 	// BETTER STYLE
 	if (body1->point->objectType == staticBody)
 	{
-		if (body1->point->position.x - body1->point->width*0.5 < body2->point->position.x)
+		if (body1->point->position.x - App->PixelToMeter(body1->point->width*0.5) < body2->point->position.x)
 		{
 			body2->point->velocity.y *= -1 * body2->point->rc;
 			body2->point->force.y = 0;
-			body2->point->position.y = body1->point->position.y - App->PixelToMeter(body1->point->height * 0.5) - App->PixelToMeter(body2->point->height * 0.5);
+			body2->point->position.y = body1->point->position.y - App->PixelToMeter(body1->point->height * 0.5) - App->PixelToMeter(body2->point->height * 0.5) - 3;
 			if (body2->point->velocity.y > -0.00001 && body2->point->velocity.y < 0.00001) body2->point->velocity.y = 0;
 		}
 		else
 		{
 			body2->point->velocity.y *= -1 * body2->point->rc;;
-			body2->point->force.x = 0;
+			
 			body2->point->position.x = body1->point->position.x - App->PixelToMeter(body1->point->width * 0.5) - App->PixelToMeter(body2->point->width * 0.5);
 			if (body2->point->velocity.x > -0.00001 && body2->point->velocity.x < 0.00001) body2->point->velocity.x = 0;
 		}
 	}
 	else if (body2->point->objectType == staticBody)
 	{
-		if (body1->point->position.x > body2->point->position.x - body2->point->width * 0.5 && body1->point->position.x < body2->point->position.x + body2->point->width * 0.5)
+		if (body2->point->position.x - App->PixelToMeter(body2->point->width * 0.5) < body1->point->position.x)
 		{
-			body1->point->velocity.y *= -1 * body1->point->rc;;
+			body1->point->velocity.y *= -1 * body1->point->rc;
 			body1->point->force.y *= 0.8;
-			body1->point->position.y = body2->point->position.y - App->PixelToMeter(body2->point->height * 0.5) - App->PixelToMeter(body1->point->height * 0.5) - 4;
+			body1->point->position.y = body2->point->position.y - App->PixelToMeter(body2->point->height * 0.5) - App->PixelToMeter(body1->point->height * 0.5) - 3;
 			if (body1->point->velocity.y > -0.00001 && body1->point->velocity.y < 0.00001) body1->point->velocity.y = 0;
 		}
 		else
 		{
-			body1->point->velocity.x *= -1 * body1->point->rc;;
+			body1->point->velocity.x *= -1 * body1->point->rc;
 			body1->point->force.x *= 0.8;
 			body1->point->position.x = body2->point->position.x - App->PixelToMeter(body2->point->width * 0.5) - App->PixelToMeter(body1->point->width * 0.5);
 			if (body1->point->velocity.x > -0.00001 && body1->point->velocity.x < 0.00001) body1->point->velocity.x = 0;
@@ -168,7 +171,7 @@ void Physics::OnCollision(Collider* body1, Collider* body2)
 	}
 	else
 	{
-		//PERFECT ELASTIC COLITIONS STUPID WAY
+		//PERFECT ELASTIC COLITIONS STUPID WAY FUIM
 		float aux = 0;
 		aux = body1->point->velocity.x;
 		body1->point->velocity.x = body2->point->velocity.x;
@@ -177,6 +180,24 @@ void Physics::OnCollision(Collider* body1, Collider* body2)
 		aux = body1->point->velocity.y;
 		body1->point->velocity.y = body2->point->velocity.y;
 		body2->point->velocity.y = aux;
+
+		if (body2->point->position.x < body1->point->position.x) //&& body1->point->position.y - App->PixelToMeter(body1->point->height * 0.5) < body2->point->position.y)
+		{
+			body1->point->position.x = body2->point->position.x + App->PixelToMeter(body1->point->width * 0.5) + App->PixelToMeter(body1->point->width * 0.5);
+		}
+		else if (body2->point->position.y < body1->point->position.y)
+		{
+			body1->point->position.y = body2->point->position.y + App->PixelToMeter(body1->point->height * 0.5) + App->PixelToMeter(body1->point->height * 0.5);
+			body1->point->force.y = 0;
+		}
+		else //if(body2->point->position.y - App->PixelToMeter(body2->point->height * 0.5) < body1->point->position.y)
+		{
+			body1->point->position.x = body2->point->position.x - App->PixelToMeter(body1->point->width * 0.5) - App->PixelToMeter(body1->point->width * 0.5);
+		}
+		//else
+		//{
+		//	body1->point->position.y = body2->point->position.y - App->PixelToMeter(body1->point->height * 0.5) - App->PixelToMeter(body1->point->height * 0.5)+ 3;
+		//}
 	}
 	
 }

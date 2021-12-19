@@ -28,6 +28,13 @@ enum update_status
 	UPDATE_ERROR
 };
 
+enum ObjType
+{
+	staticBody = 0,
+	dynamicBody = 1
+
+};
+
 // Configuration -----------
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 758

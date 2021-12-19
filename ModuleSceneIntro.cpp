@@ -23,7 +23,7 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 	App->player->SetPlayerLifes(3);
 
-	App->physics->AddBoxToWorld(2200, 8200, 2000, 300, 0, 0, 2);
+	App->physics->AddBoxToWorld(10000, 11000, 2100, 500, 0, 0, 2);
 
 
 	

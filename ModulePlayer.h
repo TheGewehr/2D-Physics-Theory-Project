@@ -7,6 +7,8 @@
 #include "moduleaudio.h"
 #include "pisobody.h"
 
+class Box;
+
 class ModulePlayer : public Module
 {
 public:
@@ -22,7 +24,7 @@ public:
 private:
 	int lifes;
 	SDL_Texture* graphic;
-	PhysBody* playerBox;
+	Box* playerBox;
 
 	uint spawnBullet_fx;
 

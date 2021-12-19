@@ -101,6 +101,8 @@ public:
 	update_status PostUpdate();
 
 	int width, height; //Pixels
+	Vector2D<float> impulseForce;
+
 private:
 
 	bool shouldCollide;

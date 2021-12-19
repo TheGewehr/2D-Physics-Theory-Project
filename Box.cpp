@@ -257,9 +257,12 @@ update_status Box::Update(float dt)
 		force.y += fdy;
 		//
 		//if (force.y > 0.000001) force.y = 0.0000000000001;
+		
 
-		acceleration.x = force.x / mass;
-		acceleration.y = force.y / mass;
+
+		
+		acceleration.x = (force.x)/ mass;
+		acceleration.y = (force.y + impulseForce.y)/ mass;
 
 
 		//verletIntegrator = false;
@@ -270,9 +273,9 @@ update_status Box::Update(float dt)
 
 		if (verletIntegrator == true) // la Y aumenta de manera exponencial
 		{
-			position.x += velocity.x * dt + 0.5f * acceleration.x * dt * dt;
+			position.x += velocity.x * dt + 0.5f * acceleration.x * dt * dt + impulseForce.x*dt;
 			position.y += velocity.y * dt + 0.5f * acceleration.y * dt * dt;
-			velocity.x += acceleration.x * dt;
+			velocity.x += acceleration.x  * dt;
 			velocity.y += acceleration.y * dt;
 		}
 		else // funciona

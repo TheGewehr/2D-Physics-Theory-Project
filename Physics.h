@@ -6,6 +6,7 @@
 #include "p2Point.h"
 #include "ModuleInput.h"
 
+class Box;
 
 //struct ObjType
 //{
@@ -15,12 +16,7 @@
 //
 //};
 
-enum ObjType
-{
-	 staticBody = 0,
-	 dynamicBody = 1
 
-};
 
 // Como voy a medir las distancias?
 
@@ -49,7 +45,7 @@ public:
 	void SetDebug(bool d);
 	p2List<PhysBody*> GetWorld();
 
-	void AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type);
+	Box* AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type);
 
 	void OnCollision(Collider* body1, Collider* body2);
 
