@@ -51,6 +51,8 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
+	Box* enemy;
+	int enemy_int;
 public:
 	SDL_Texture* graphics;
 	PhysBody* background;

@@ -4,7 +4,8 @@
 #include "ModulePhysbodyController.h"
 #include "pisobody.h"
 #include "Collisions.h"
-
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -24,7 +25,6 @@ bool ModuleSceneIntro::Start()
 	App->player->SetPlayerLifes(3);
 
 	App->physics->AddBoxToWorld(10000, 11000, 2100, 500, 0, 0, 2);
-
 
 	
 
@@ -47,6 +47,7 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update(float dt)
 {
 	
+
 	App->physics->Draw();
 
 	return UPDATE_CONTINUE;

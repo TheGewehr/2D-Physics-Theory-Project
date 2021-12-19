@@ -26,8 +26,6 @@ bool ModulePlayer::Start()
 	graphic = App->textures->Load("worms/weapons/Grenade.png");
 	
 
-	
-
 	spawnBullet_fx;
 	playerBox =	App->physics->AddBoxToWorld(5000, 000, 100, 100, 1.0, 0.4, 1);
 

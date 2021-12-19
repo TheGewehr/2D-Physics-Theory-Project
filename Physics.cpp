@@ -22,7 +22,7 @@ bool Physics::Start()
 {
 	LOG(" Starting the Physics Engyne! ");
 
-	AddBoxToWorld(2800, 400, 100, 100, 1.0, 0.8, 1);
+	
 
 	return true;
 }
