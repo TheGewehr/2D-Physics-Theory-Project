@@ -22,13 +22,14 @@ bool ModuleSceneIntro::Start()
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 	App->player->SetPlayerLifes(3);
-	App->physics->AddBoxToWorld(2200, 8200, 2000, 300, 2);
+
+	App->physics->AddBoxToWorld(2200, 8200, 3000, 300, 2);
 
 	
 
 	//App->audio->PlayMusic("worms/Audio/Thomas_the_Dank_Engine_SFM_Music_Video-lzmWzXLPa6I.ogg");
-	//App->audio->PlayMusic("worms/Audio/toby-fox-UNDERTALE-Soundtrack-43-Temmie-Village.ogg");
-	App->audio->PlayMusic("worms/Audio/MadWorld-GaryJules.ogg");
+	App->audio->PlayMusic("worms/Audio/toby-fox-UNDERTALE-Soundtrack-43-Temmie-Village.ogg");
+	//App->audio->PlayMusic("worms/Audio/MadWorld-GaryJules.ogg");
 
 	return ret;
 }

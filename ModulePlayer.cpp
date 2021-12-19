@@ -19,8 +19,16 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
+
+
+	lifes  = 3;
+	graphic = App->textures->Load("worms/weapons/Grenade.png");
 	
-	
+	playerBox;
+
+	spawnBullet_fx;
+
+
 	return true;
 	
 
@@ -42,5 +50,11 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update(float dt)
 {
+	return UPDATE_CONTINUE;
+}
+
+update_status ModulePlayer::PostUpdate()
+{
+	//App->renderer->Blit(graphic,);
 	return UPDATE_CONTINUE;
 }
