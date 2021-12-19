@@ -8,7 +8,7 @@
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-	//App->physics->AddBoxToWorld(100, 100, 100, 100, 1);
+	
 
 }
 
@@ -20,7 +20,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 	
-	
+	App->physics->AddBoxToWorld(5000, 000, 100, 100, 1.0, 0.4, 1);
 	return true;
 	
 

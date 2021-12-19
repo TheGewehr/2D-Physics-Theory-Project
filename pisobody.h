@@ -87,7 +87,7 @@ public:
 	float surface; // Effective wet surface
 	float cl; // Lift coefficient
 	float cd; // Drag coefficient
-
+	float rc; // Restitutions coefficient
 	int id;
 	Vector2D<int> worldPosition; // Pixels
 	ObjType objectType;

@@ -16,7 +16,7 @@ Collisions::Collisions(Application* app, bool start_enabled) : Module(app, start
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		colliders[i] = nullptr;
 
-	matrix[Collider::Type::WALL][Collider::Type::WALL] = false;
+	matrix[Collider::Type::WALL][Collider::Type::WALL] = true;
 	matrix[Collider::Type::WALL][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::WALL][Collider::Type::PLAT] = false;
 	
@@ -123,10 +123,14 @@ update_status Collisions::PreUpdate()
 
 			c2 = colliders[k];
 
-			if (matrix[c1->type][c2->type] && c1->Intersects(c2->rect) && (c2 != nullptr) && c1 != nullptr)
+			if ( c1->Intersects(c2->rect) && (c2 != nullptr) && c1 != nullptr)
 			{
-				for (uint i = 0; i < MAX_LISTENERS; ++i) {}
-					if (c1->listeners[i] != nullptr) c1->listeners[i]->OnCollision(c1, c2);
+				for (uint i = 0; i < MAX_LISTENERS; ++i) 
+				if (c1->listeners[i] != nullptr)
+				{
+					c1->listeners[i]->OnCollision(c1, c2);
+					break;
+				}
 					
 			}
 		}

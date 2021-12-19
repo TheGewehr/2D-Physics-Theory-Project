@@ -11,7 +11,7 @@ class Box : public PhysBody
 {
 public:
 
-	Box(int x, int y, int w, int h, int type) : PhysBody(x, y, w, h)
+	Box(int x, int y, int w, int h, float mass_, float rc_, int type) : PhysBody(x, y, w, h)
 	{
 
 		width = w;
@@ -50,8 +50,9 @@ public:
 		force.y = 0;
 
 		// Mass
-		mass = 1;
-
+		mass = mass_;
+		//mass = 1;
+		rc = rc_;
 		// Aerodynamics stuff
 		surface=1; // Effective wet surface
 		cl = 1; // Lift coefficient
@@ -80,51 +81,6 @@ public:
 		dontCheck = false;
 	}
 
-	Box() : PhysBody()
-	{
-		width = 1;
-		height = 1;
-
-		localPosition.x = 0;
-		localPosition.y = 0;
-
-		shouldCollide = true;
-
-		// Position
-// You could also use an array/vector
-
-		position.x = 0;
-		position.y = 0;
-		// Velocity
-
-		velocity.x = 0;
-
-		velocity.y = 0;
-		// Acceleration
-
-		acceleration.x = 0;
-		acceleration.y = 0;
-		// Force (total) applied to the ball
-
-		force.x = 0;
-		force.y = 0;
-		// Mass
-		mass = 1;
-
-		// Aerodynamics stuff
-		surface = 1; // Effective wet surface
-		cl = 0.5; // Lift coefficient
-		cd.x = 1;
-		cd.y = 0.5; // Drag coefficient
-
-		id = -1;
-		worldPosition.x = App->MeterToPixel(position.x); // Pixels
-		worldPosition.y = App->MeterToPixel(position.y);
-		objectType = staticBody;
-
-		listener = nullptr;
-	
-	};
 
 	~Box() {};
 	bool Start();
@@ -168,6 +124,7 @@ private:
 	// Aerodynamics stuff
 	float surface; // Effective wet surface
 	float cl; // Lift coefficient
+	float rc; // restitution coeficient
 	Vector2D<float> cd; // Drag coefficient
 
 	int id;
