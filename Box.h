@@ -103,7 +103,7 @@ public:
 	int width, height; //Pixels
 	Vector2D<float> impulseForce;
 
-private:
+public:
 
 	bool shouldCollide;
 

@@ -76,6 +76,7 @@ update_status ModulePlayer::Update(float dt)
 
 update_status ModulePlayer::PostUpdate()
 {
-	//App->renderer->Blit(graphic,);
+	App->renderer->Blit(graphic, playerBox->worldPosition.x - playerBox->point01.x, playerBox->worldPosition.y - playerBox->point01.y);
+
 	return UPDATE_CONTINUE;
 }
