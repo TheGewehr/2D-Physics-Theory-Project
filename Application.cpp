@@ -8,6 +8,7 @@ Application::Application()
 {
 	frameCount = 0;
 
+	physics = new Physics(this);
 	renderer = new ModuleRender(this);
 	window = new ModuleWindow(this);
 	textures = new ModuleTextures(this);
@@ -16,7 +17,7 @@ Application::Application()
 	player = new ModulePlayer(this);
 	scene_intro = new ModuleSceneIntro(this);
 	phys_controller = new PyhsBodyController(this);
-	physics = new Physics(this);
+	
 	coll = new Collisions(this);
 
 	// The order of calls is very important!

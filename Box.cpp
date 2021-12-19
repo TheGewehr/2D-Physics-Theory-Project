@@ -52,34 +52,34 @@ void Box::SetDimensions(int x, int y) // In pixels
 
 void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module* lis)
 {
-	Box* b = new Box;
+	//Box* b = new Box(x, y, ;
 
-	b->SetDimensions(width, height);
-	b->SetType(staticBody);
-	b->shouldCollide = true;
-	b->SetWorldPosition(x,y);
-	// Apply rotation to b
-	b->SetListener(lis);
-	verletIntegrator = true;
+	//b->SetDimensions(width, height);
+	//b->SetType(staticBody);
+	//b->shouldCollide = true;
+	//b->SetWorldPosition(x,y);
+	//// Apply rotation to b
+	//b->SetListener(lis);
+	//verletIntegrator = true;
 
-	delete b;
+	//delete b;
 }
 
 
 
 void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Module* lis)
 {
-	Box* b = new Box;
+	//Box* b = new Box;
 
-	b->SetDimensions(width, height);
-	b->SetType(dynamicBody);
-	b->shouldCollide = true;
-	b->SetWorldPosition(x, y);
-	// Apply rotation to b
-	b->SetListener(lis);
-	verletIntegrator = true;
-
-	delete b;
+	//b->SetDimensions(width, height);
+	//b->SetType(dynamicBody);
+	//b->shouldCollide = true;
+	//b->SetWorldPosition(x, y);
+	//// Apply rotation to b
+	//b->SetListener(lis);
+	//verletIntegrator = true;
+	//
+	//delete b;
 }
 
 void Box::DebugDraw()
@@ -204,7 +204,7 @@ update_status Box::Update(float dt)
 		position.x = hitbox->point->position.x;
 		position.y = hitbox->point->position.y;
 		force = hitbox->point->force;
-		
+		objectType = hitbox->point->objectType;
 	}
 	else dontCheck = true;
 
@@ -319,6 +319,9 @@ update_status Box::Update(float dt)
 		hitbox->point->force = force;
 		hitbox->point->height = height;
 		hitbox->point->width = width;
+		hitbox->point->objectType = objectType;
+		hitbox->point->mass = mass;
+		hitbox->point->rc = rc;
 	}
 
 	return UPDATE_CONTINUE;
