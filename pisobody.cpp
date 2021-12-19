@@ -2,6 +2,7 @@
 
 PhysBody::PhysBody(Application* app, bool start_enabled)
 {
+	
 }
 
 PhysBody::PhysBody(int x, int y, int w, int h)

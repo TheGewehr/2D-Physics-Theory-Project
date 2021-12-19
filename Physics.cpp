@@ -21,7 +21,9 @@ Physics::~Physics()
 bool Physics::Start()
 {
 	LOG(" Starting the Physics Engyne! ");
+
 	AddBoxToWorld(800, 100, 100, 100, 1);
+
 	return true;
 }
 

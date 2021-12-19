@@ -92,5 +92,7 @@ public:
 	ObjType objectType;
 
 	Module* listener;
+
+	bool verletIntegrator;
 };
 

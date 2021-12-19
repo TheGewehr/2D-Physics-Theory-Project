@@ -53,9 +53,12 @@ public:
 
 	void OnCollision(Collider* body1, Collider* body2);
 
+	
+
 private:
 
 	bool debug;
+	
 
 	p2List<PhysBody*> World;
 

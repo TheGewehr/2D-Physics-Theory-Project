@@ -3,14 +3,6 @@
 #include "Application.h"
 #include "Physics.h"
 
-bool Box::Start()
-{
-
-	hitbox = App->coll->AddCollider({ (int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5), width, height }, Collider::Type::PLAYER, this, App->physics);
-
-	return true;
-}
-
 int Box::GetWidth()const // In pixels
 {
 	return width;
@@ -48,7 +40,7 @@ void Box::SetDimensions(int x, int y) // In pixels
 	f.x = (0.5 * width);
 	f.y = (0.5 * height);
 
-	point03 = localPosition.operator+(f);
+	point04 = localPosition.operator+(f);
 }
 
 void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module* lis)
@@ -61,6 +53,7 @@ void Box::AddStaticBox(int x, int y, int width, int height, int rotation, Module
 	b->SetWorldPosition(x,y);
 	// Apply rotation to b
 	b->SetListener(lis);
+	verletIntegrator = true;
 
 	delete b;
 }
@@ -77,6 +70,7 @@ void Box::AddDynamicBox(int x, int y, int width, int height, int rotation, Modul
 	b->SetWorldPosition(x, y);
 	// Apply rotation to b
 	b->SetListener(lis);
+	verletIntegrator = true;
 
 	delete b;
 }
@@ -184,6 +178,7 @@ update_status Box::Update(float dt)
 		//ball.fx += fdx;
 		//ball.fy += fdy;
 		//
+
 	if (objectType == dynamicBody)
 	{
 		//	// Compute Gravity force
@@ -202,8 +197,8 @@ update_status Box::Update(float dt)
 		speed.y = velocity.y;
 		//double fdrag = 0.5 * atmosphere.density * speed * speed * ball.surface * ball.cd;
 		Vector2D<float> fdrag;
-		fdrag.x = 0.5f * 1.2041f * speed.x * speed.x * App->PixelToMeter(GetWidth()) * cd.x;
-		fdrag.y = 0.5f * 1.2041f * speed.y * speed.y * App->PixelToMeter(GetHeight()) * cd.y;
+		fdrag.x = 0.5f * 1.2041f * speed.x * speed.x * App->PixelToMeter(GetWidth()) * cd;
+		fdrag.y = 0.5f * 1.2041f * speed.y * speed.y * App->PixelToMeter(GetHeight()) * cd;
 		//double flift = 0.5 * atmosphere.density * speed * speed * ball.surface * ball.cl;
 		float flift = 0.5 * 1.2041f * speed.y * speed.y * App->PixelToMeter(GetWidth()) * cl;
 		//double fdx = -fdrag; // Let's assume Drag is aligned with x-axis (in your game, generalize this)
@@ -220,14 +215,26 @@ update_status Box::Update(float dt)
 		acceleration.y = force.y / mass;
 
 
-
+		verletIntegrator = false;
 		//// Step #3: Integrate --> from accel to new velocity & new position. 
 		//// We will use the 2nd order "Velocity Verlet" method for integration.
 		//// You can also move this code into a subroutine: integrator_velocity_verlet(ball, dt);
-		position.x += velocity.x * dt + 0.5f * acceleration.x * dt * dt;
-		position.y += velocity.y * dt + 0.5f * acceleration.y * dt * dt;
-		velocity.x += acceleration.x * dt;
-		velocity.y += acceleration.y * dt;
+		if (verletIntegrator == true)
+		{
+			position.x += velocity.x * dt + 0.5f * acceleration.x * dt * dt;
+			position.y += velocity.y * dt + 0.5f * acceleration.y * dt * dt;
+			velocity.x += acceleration.x * dt;
+			velocity.y += acceleration.y * dt;
+		}
+		else
+		{
+			position.x += (velocity.x * dt);
+			position.y += (velocity.y * dt);
+
+			velocity.x += acceleration.x;
+			velocity.y += acceleration.y ;
+		}
+		
 		//
 
 		//// Step #4: solve collisions
