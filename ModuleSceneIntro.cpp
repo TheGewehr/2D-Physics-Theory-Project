@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleSceneIntro.h"
 #include "ModulePhysbodyController.h"
+#include "pisobody.h"
 #include "Collisions.h"
 
 
@@ -37,6 +38,8 @@ bool ModuleSceneIntro::CleanUp()
 // Update: draw background
 update_status ModuleSceneIntro::Update(float dt)
 {
+
+	App->physics->Draw();
 
 	return UPDATE_CONTINUE;
 }

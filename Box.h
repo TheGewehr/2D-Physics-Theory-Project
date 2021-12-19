@@ -39,16 +39,16 @@ public:
 		// Velocity
 
 		velocity.x = 0;
-
 		velocity.y = 0;
-		// Acceleration
 
+		// Acceleration
 		acceleration.x = 0;
 		acceleration.y = 0;
-		// Force (total) applied to the ball
 
+		// Force (total) applied to the ball
 		force.x = 0;
 		force.y = 0;
+
 		// Mass
 		mass = 1;
 
@@ -59,8 +59,10 @@ public:
 		cd.y = 1.0f;
 
 		id=-1;
-		worldPosition.x = App->MeterToPixel(position.x); // Pixels
+
+		worldPosition.x = App->MeterToPixel(position.x); 
 		worldPosition.y = App->MeterToPixel(position.y);
+
 		if (type == 1)
 		{
 			objectType = dynamicBody;
@@ -75,6 +77,7 @@ public:
 
 		// HITBOX
 		Start();
+		dontCheck = false;
 	}
 
 	Box() : PhysBody()
@@ -132,18 +135,18 @@ public:
 	void AddKinematicBox(int x, int y, int width, int height, int rotation, Module* lis);
 	void AddDynamicBox(int x, int y, int width, int height, int rotation, Module* lis);
 	void DebugDraw();
-	int GetWidth();
-	int GetHeight();
-
+	int GetWidth() override;
+	int GetHeight() override;
+	bool dontCheck;
 	update_status PreUpdate();
 
 	update_status Update(float dt);
 
 	update_status PostUpdate();
 
+	int width, height; //Pixels
 private:
 
-	int width, height; //Pixels
 	bool shouldCollide;
 
 	Collider* hitbox;

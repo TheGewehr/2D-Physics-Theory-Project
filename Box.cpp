@@ -5,7 +5,7 @@
 
 bool Box::Start()
 {
-	hitbox = App->coll->AddCollider({ (int)(position.x - width * 0.5), (int)(position.y - height * 0.5), height, width }, Collider::Type::PLAYER, this, App->physics);
+	hitbox = App->coll->AddCollider({ (int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5), width, height }, Collider::Type::PLAYER, this, App->physics);
 
 	return true;
 }
@@ -197,14 +197,16 @@ update_status Box::Update(float dt)
 		//ball.fx += fdx;
 		//ball.fy += fdy;
 		//
-	if (hitbox != NULL)
+	if (hitbox != NULL && dontCheck)
 	{
 		velocity.x = hitbox->point->velocity.x;
 		velocity.y = hitbox->point->velocity.y;
 		position.x = hitbox->point->position.x;
 		position.y = hitbox->point->position.y;
-
+		force = hitbox->point->force;
+		
 	}
+	else dontCheck = true;
 
 	if (objectType == dynamicBody)
 	{
@@ -213,7 +215,7 @@ update_status Box::Update(float dt)
 		//	// Compute Gravity force
 		float fgx = mass * 0.0f;
 
-		float fgy = mass * 0.0000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+		float fgy = mass * 0.000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
 
 		//float fgy = mass * 0.00000001f; // Let's assume gravity is constant and downwards BIG FUIM!
 
@@ -242,7 +244,7 @@ update_status Box::Update(float dt)
 		force.x += fdx;
 		force.y += fdy;
 		//
-
+		//if (force.y > 0.000001) force.y = 0.0000000000001;
 
 		acceleration.x = force.x / mass;
 		acceleration.y = force.y / mass;
@@ -300,7 +302,9 @@ update_status Box::Update(float dt)
 		hitbox->point->velocity.y = velocity.y;
 		hitbox->point->position.x = position.x;
 		hitbox->point->position.y = position.y;
-
+		hitbox->point->force = force;
+		hitbox->point->height = height;
+		hitbox->point->width = width;
 	}
 
 	return UPDATE_CONTINUE;

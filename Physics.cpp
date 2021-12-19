@@ -22,7 +22,7 @@ bool Physics::Start()
 {
 	LOG(" Starting the Physics Engyne! ");
 
-	AddBoxToWorld(2800, 100, 100, 100, 1);
+	AddBoxToWorld(2800, 400, 100, 100, 1);
 
 	return true;
 }
@@ -55,7 +55,7 @@ update_status Physics::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-update_status Physics::PostUpdate()
+update_status Physics::Draw()
 {
 
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
@@ -71,10 +71,10 @@ update_status Physics::PostUpdate()
 	}
 		
 	p2List_item<PhysBody*>* node = World.getFirst();
-	
+
 	if (node != nullptr)
 	{
-		
+
 		while (node != NULL)
 		{
 			node->data->PostUpdate();
@@ -125,24 +125,81 @@ p2List<PhysBody*> Physics::GetWorld()
 
 void Physics::AddBoxToWorld(int x, int y, int w, int h, int type)
 {
-	Box * a = new Box(x, y, w, h, type);
-	World.add(a);
+
+	World.add(new Box(x, y, w, h, type));
 }
 
 void Physics::OnCollision(Collider* body1, Collider* body2)
 {
+	// STUPID STYLE
 	if (body1->point->objectType == staticBody)
 	{
-		body2->point->velocity.y *= -1;
-		body2->point->acceleration.y = 0;
-		body2->point->position.y = 0;//App->PixelToMeter(body1->point->position.y + body2->point->GetWidth());
+		if (body2->point->position.x > body1->point->position.x - body2->point->width * 0.5 && body2->point->position.x < body1->point->position.x + body1->point->width * 0.5)
+		{
+			body2->point->velocity.y *= -1 * 0.8;
+			body2->point->force.y = 0;
+
+		}
 	}
 	else if (body2->point->objectType == staticBody)
 	{
-		body1->point->velocity.y *= -1;
-		body1->point->acceleration.y = 0;
-		body1->point->worldPosition.y = App->MeterToPixel(body1->point->position.y + body2->point->GetWidth());
-		
+		if (body1->point->position.x > body2->point->position.x - body2->point->width * 0.5 && body1->point->position.x < body2->point->position.x + body2->point->width * 0.5)
+		{
+			body1->point->velocity.y *= -1 * 0.8;
+			body1->point->force.y *= 0.8;
+
+		}
 	}
+	
 }
 
+//if (body1->point->objectType == staticBody)
+//{
+//	if (body2->point->velocity.y < 1 && body2->point->velocity.y > -1)
+//	{
+//		body2->point->velocity.y = 0;
+//		body2->point->acceleration.y = 0;
+//		body2->point->position.y = body1->point->position.x + App->PixelToMeter(body2->point->GetHeight());
+//	}
+//	else
+//	{
+//		body2->point->velocity.y *= -1 * 0.8;
+//		body2->point->acceleration.y = 0;
+//		body2->point->position.y = body1->point->position.x + App->PixelToMeter(body2->point->GetHeight());
+//	}
+//}
+//else if (body2->point->objectType == staticBody)
+//{
+//	/*if (body2->point->velocity.y < 0.000000000000000000000000000000005 && body2->point->velocity.y > -0.000000000000000000000000000005)
+//	{
+//		body1->point->velocity.y = 0;
+//		body1->point->acceleration.y = 0;
+//		body1->point->worldPosition.y = body2->point->position.x + App->PixelToMeter(body1->point->GetHeight());
+//	}
+//	else*/
+//	{
+//		body1->point->force.x = 0;
+//		body1->point->force.y = 0;
+//		body1->point->velocity.y *= -1 * 0;
+//		body1->point->acceleration.y = 0;
+//		body1->point->position.y = body2->point->position.x;
+//	}
+
+//	// STUPID STYLE
+//if (body1->point->objectType == staticBody)
+//{
+//	if (body2->point->position.x > body1->point->position.x - body2->point->width * 0.5 && body2->point->position.x < body1->point->position.x + body1->point->width * 0.5)
+//	{
+//		body2->point->velocity.y *= -1 * 0.8;
+//		body2->point->force.y = 0;
+//
+//	}
+//}
+//else if (body2->point->objectType == staticBody)
+//{
+//	if (body1->point->position.x > body2->point->position.x - body2->point->width * 0.5 && body1->point->position.x < body2->point->position.x + body2->point->width * 0.5)
+//	{
+//		body1->point->velocity.y *= -1 * 0.8;
+//		body2->point->force.y = 0;
+//	}
+//}

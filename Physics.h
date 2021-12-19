@@ -42,7 +42,7 @@ public:
 
 	update_status PreUpdate();
 	update_status Update(float dt);
-	update_status PostUpdate();
+	update_status Draw();
 
 	bool CleanUp();
 	bool GetDebug();

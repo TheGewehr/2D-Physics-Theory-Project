@@ -127,8 +127,7 @@ update_status Collisions::PreUpdate()
 			{
 				for (uint i = 0; i < MAX_LISTENERS; ++i) {}
 					if (c1->listeners[i] != nullptr) c1->listeners[i]->OnCollision(c1, c2);
-					for (uint i = 0; i < MAX_LISTENERS; ++i) {}
-					if (c2->listeners[i] != nullptr) c2->listeners[i]->OnCollision(c2, c1);
+					
 			}
 		}
 	}

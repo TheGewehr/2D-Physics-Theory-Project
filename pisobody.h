@@ -82,6 +82,7 @@ public:
 	// Mass
 	float mass;
 
+	int width, height;
 	// Aerodynamics stuff
 	float surface; // Effective wet surface
 	float cl; // Lift coefficient
