@@ -6,7 +6,7 @@
 bool Box::Start()
 {
 	hitbox = App->coll->AddCollider({ (int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5), width, height }, Collider::Type::PLAYER, this, App->physics);
-
+	verletIntegrator = true;
 	return true;
 }
 
@@ -221,7 +221,10 @@ update_status Box::Update(float dt)
 		float fgx = mass * 0.0f;
 		float fgy = 0;
 
-		if (verletIntegrator) fgy = mass * 0.0000000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+		if (verletIntegrator)
+		{
+			fgy = mass * 0.0000000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+		}
 		else
 		{
 			fgy = mass * 0.00006; // DA MAXIMUM FUIM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -263,9 +266,9 @@ update_status Box::Update(float dt)
 		//// Step #3: Integrate --> from accel to new velocity & new position. 
 		//// We will use the 2nd order "Velocity Verlet" method for integration.
 		//// You can also move this code into a subroutine: integrator_velocity_verlet(ball, dt);
-		verletIntegrator = true;
+		
 
-		if (verletIntegrator == false) // la Y aumenta de manera exponencial
+		if (verletIntegrator == true) // la Y aumenta de manera exponencial
 		{
 			position.x += velocity.x * dt + 0.5f * acceleration.x * dt * dt;
 			position.y += velocity.y * dt + 0.5f * acceleration.y * dt * dt;
