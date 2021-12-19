@@ -210,6 +210,11 @@ update_status Box::Update(float dt)
 
 	if (objectType == dynamicBody)
 	{
+
+		acceleration.x = 0;
+		acceleration.y = 0;
+		force.x = 0;
+		force.y = 0;
 		
 		
 		//	// Compute Gravity force
@@ -254,14 +259,16 @@ update_status Box::Update(float dt)
 		//// Step #3: Integrate --> from accel to new velocity & new position. 
 		//// We will use the 2nd order "Velocity Verlet" method for integration.
 		//// You can also move this code into a subroutine: integrator_velocity_verlet(ball, dt);
-		if (verletIntegrator == true)
+		verletIntegrator = true;
+
+		if (verletIntegrator == true) // la Y aumenta de manera exponencial
 		{
 			position.x += velocity.x * dt + 0.5f * acceleration.x * dt * dt;
 			position.y += velocity.y * dt + 0.5f * acceleration.y * dt * dt;
 			velocity.x += acceleration.x * dt;
 			velocity.y += acceleration.y * dt;
 		}
-		else
+		else // funciona
 		{
 			position.x += (velocity.x * dt);
 			position.y += (velocity.y * dt);

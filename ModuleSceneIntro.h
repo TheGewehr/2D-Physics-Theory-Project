@@ -73,4 +73,7 @@ public:
 
 	PhysBody* player_lose;
 	uint player_lose_fx;
+
+	
+
 };
