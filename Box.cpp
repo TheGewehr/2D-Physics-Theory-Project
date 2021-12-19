@@ -3,6 +3,13 @@
 #include "Application.h"
 #include "Physics.h"
 
+bool Box::Start()
+{
+	hitbox = App->coll->AddCollider({ (int)(position.x - width * 0.5), (int)(position.y - height * 0.5), height, width }, Collider::Type::PLAYER, this, App->physics);
+
+	return true;
+}
+
 int Box::GetWidth()const // In pixels
 {
 	return width;
@@ -190,12 +197,26 @@ update_status Box::Update(float dt)
 		//ball.fx += fdx;
 		//ball.fy += fdy;
 		//
+	if (hitbox != NULL)
+	{
+		velocity.x = hitbox->point->velocity.x;
+		velocity.y = hitbox->point->velocity.y;
+		position.x = hitbox->point->position.x;
+		position.y = hitbox->point->position.y;
+
+	}
 
 	if (objectType == dynamicBody)
 	{
+		
+		
 		//	// Compute Gravity force
 		float fgx = mass * 0.0f;
-		float fgy = mass * 0.00000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+
+		float fgy = mass * 0.0000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+
+		//float fgy = mass * 0.00000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+
 		//
 		//// Add gravity force to the total accumulated force of the ball
 		force.x += fgx;
@@ -269,10 +290,17 @@ update_status Box::Update(float dt)
 	{
 		LOG(" Type of object error");
 	}
+
 	// Setting hitbox to real position
 	if (hitbox != NULL)
 	{
-		hitbox->SetPos((int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5));
+		hitbox->SetPos((int)(worldPosition.x - (width * 0.5)), (int)(worldPosition.y -( height * 0.5)));
+
+		hitbox->point->velocity.x = velocity.x;
+		hitbox->point->velocity.y = velocity.y;
+		hitbox->point->position.x = position.x;
+		hitbox->point->position.y = position.y;
+
 	}
 
 	return UPDATE_CONTINUE;

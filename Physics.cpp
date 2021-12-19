@@ -22,7 +22,7 @@ bool Physics::Start()
 {
 	LOG(" Starting the Physics Engyne! ");
 
-	AddBoxToWorld(800, 100, 100, 100, 1);
+	AddBoxToWorld(2800, 100, 100, 100, 1);
 
 	return true;
 }
@@ -125,7 +125,6 @@ p2List<PhysBody*> Physics::GetWorld()
 
 void Physics::AddBoxToWorld(int x, int y, int w, int h, int type)
 {
-
 	Box * a = new Box(x, y, w, h, type);
 	World.add(a);
 }
@@ -136,15 +135,14 @@ void Physics::OnCollision(Collider* body1, Collider* body2)
 	{
 		body2->point->velocity.y *= -1;
 		body2->point->acceleration.y = 0;
-		body2->point->worldPosition.y = body1->point->worldPosition.y + body2->point->GetWidth();
-		body2->point->worldPosition.y = 0;
-		body2->point->position.y = 0;
+		body2->point->position.y = 0;//App->PixelToMeter(body1->point->position.y + body2->point->GetWidth());
 	}
-	else if (body1->point->objectType == staticBody)
+	else if (body2->point->objectType == staticBody)
 	{
 		body1->point->velocity.y *= -1;
 		body1->point->acceleration.y = 0;
-		body1->point->worldPosition.y = body2->point->worldPosition.y + body1->point->GetWidth();
+		body1->point->worldPosition.y = App->MeterToPixel(body1->point->position.y + body2->point->GetWidth());
+		
 	}
 }
 
