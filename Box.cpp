@@ -104,6 +104,18 @@ update_status Box::PreUpdate()
 update_status Box::Update(float dt)
 {
 
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
+	{
+		if (verletIntegrator == false)
+		{
+			verletIntegrator = true;
+		}
+		else
+		{
+			verletIntegrator = false;
+		}
+	}
+
 	//// Step #0: Reset total acceleration and total accumulated force of the ball (clear old values)
 	//ball.fx = ball.fy = 0.0;
 	//ball.ax = ball.ay = 0.0;
@@ -183,7 +195,7 @@ update_status Box::Update(float dt)
 	{
 		//	// Compute Gravity force
 		float fgx = mass * 0.0f;
-		float fgy = mass * 0.00000000000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+		float fgy = mass * 0.00000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
 		//
 		//// Add gravity force to the total accumulated force of the ball
 		force.x += fgx;
@@ -197,8 +209,8 @@ update_status Box::Update(float dt)
 		speed.y = velocity.y;
 		//double fdrag = 0.5 * atmosphere.density * speed * speed * ball.surface * ball.cd;
 		Vector2D<float> fdrag;
-		fdrag.x = 0.5f * 1.2041f * speed.x * speed.x * App->PixelToMeter(GetWidth()) * cd;
-		fdrag.y = 0.5f * 1.2041f * speed.y * speed.y * App->PixelToMeter(GetHeight()) * cd;
+		fdrag.x = 0.5f * 1.2041f * speed.x * speed.x * App->PixelToMeter(GetWidth()) * cd.x;
+		fdrag.y = 0.5f * 1.2041f * speed.y * speed.y * App->PixelToMeter(GetHeight()) * cd.y;
 		//double flift = 0.5 * atmosphere.density * speed * speed * ball.surface * ball.cl;
 		float flift = 0.5 * 1.2041f * speed.y * speed.y * App->PixelToMeter(GetWidth()) * cl;
 		//double fdx = -fdrag; // Let's assume Drag is aligned with x-axis (in your game, generalize this)
@@ -215,7 +227,7 @@ update_status Box::Update(float dt)
 		acceleration.y = force.y / mass;
 
 
-		verletIntegrator = false;
+		//verletIntegrator = false;
 		//// Step #3: Integrate --> from accel to new velocity & new position. 
 		//// We will use the 2nd order "Velocity Verlet" method for integration.
 		//// You can also move this code into a subroutine: integrator_velocity_verlet(ball, dt);
