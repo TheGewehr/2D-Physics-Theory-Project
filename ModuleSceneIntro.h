@@ -52,28 +52,12 @@ public:
 	bool CleanUp();
 
 public:
-	SDL_Texture* graphics;
-	PhysBody* background;
-
-	Bouncer bouncer1;
-	Bouncer bouncer2;
-
-	Bouncer side_bouncer1;
-	Bouncer side_bouncer2;
-
-	SDL_Texture* tex_light_tiny;
-	SDL_Texture* tex_light_medium;
-	SDL_Texture* tex_light_big;
 	
-	uint fx_light_tiny;
-	uint fx_light_medium;
-	uint fx_light_big;
-
-	p2DynArray<Light> lights;
-
-	PhysBody* player_lose;
-	uint player_lose_fx;
-
+	SDL_Texture* wall01;
+	SDL_Texture* wall02;
+	SDL_Texture* win_Screen;
+	SDL_Texture* loose_Screen;
+	SDL_Texture* background;
 	
 
 };
