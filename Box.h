@@ -11,8 +11,9 @@ class Box : public PhysBody
 {
 public:
 
-	Box(int x, int y, int w, int h) : PhysBody(x, y, w, h)
+	Box(int x, int y, int w, int h, int type) : PhysBody(x, y, w, h)
 	{
+
 		width = w;
 		height = h;
 
@@ -60,12 +61,20 @@ public:
 		id=-1;
 		worldPosition.x = App->MeterToPixel(position.x); // Pixels
 		worldPosition.y = App->MeterToPixel(position.y);
-		objectType = dynamicBody;
+		if (type == 1)
+		{
+			objectType = dynamicBody;
+		}
+		else if (type == 2)
+		{
+			objectType = staticBody;
+		}
+		
 
 		listener = nullptr;
 
 		// HITBOX
-		hitbox = App->coll->AddCollider({ (int)(worldPosition.x - width*0.5), (int)(worldPosition.y - height*0.5), width, height }, Collider::Type::PLAYER, this, App->physics);
+		Start();
 	}
 
 	Box() : PhysBody()
@@ -115,7 +124,7 @@ public:
 	};
 
 	~Box() {};
-
+	bool Start();
 	int GetWidth()const;
 	int GetHeight()const;
     void SetDimensions(int x, int y);

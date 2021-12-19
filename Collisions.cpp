@@ -27,7 +27,7 @@ Collisions::Collisions(Application* app, bool start_enabled) : Module(app, start
 
 
 	matrix[Collider::Type::PLAYER][Collider::Type::WALL] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAT] = true;
 	
 	matrix[Collider::Type::PLAYER][Collider::Type::CAM] = true;
@@ -81,7 +81,8 @@ Collisions::Collisions(Application* app, bool start_enabled) : Module(app, start
 	matrix[Collider::Type::ENEMY][Collider::Type::CAM] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::WIN] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::LOSE] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = true;;
+	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = true;
+
 }
 
 // Destructor
@@ -125,9 +126,9 @@ update_status Collisions::PreUpdate()
 			if (matrix[c1->type][c2->type] && c1->Intersects(c2->rect) && (c2 != nullptr) && c1 != nullptr)
 			{
 				for (uint i = 0; i < MAX_LISTENERS; ++i) {}
-				//	if (c1->listeners[i] != nullptr) c1->listeners[i]->OnCollision(c1, c2);
+					if (c1->listeners[i] != nullptr) c1->listeners[i]->OnCollision(c1, c2);
 					for (uint i = 0; i < MAX_LISTENERS; ++i) {}
-				//	if (c2->listeners[i] != nullptr) c2->listeners[i]->OnCollision(c2, c1);
+					if (c2->listeners[i] != nullptr) c2->listeners[i]->OnCollision(c2, c1);
 			}
 		}
 	}
@@ -212,7 +213,7 @@ bool Collisions::CleanUp()
 	return true;
 }
 
-void Collisions::OnCollision(PhysBody* c1, PhysBody* c2)
+void Collisions::OnCollision(Collider* body1, Collider* body2)
 {
 }
 

@@ -94,7 +94,7 @@ PhysBody* PyhsBodyController::AddPhysBody(int x, int y, int w, int h, int enemy)
 	{
 		if (Enemies[i] == nullptr)
 		{
-			Enemies[i] = new Box(x, y, w, h);
+			//Enemies[i] = new Box(x, y, w, h);
 			break;
 		}
 	}

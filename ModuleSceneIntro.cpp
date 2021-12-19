@@ -21,8 +21,7 @@ bool ModuleSceneIntro::Start()
 
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 	App->player->SetPlayerLifes(3);
-
-	App->coll->AddCollider({ 100, 100, 100, 100 }, Collider::Type::PLAT, 0, this);
+	App->physics->AddBoxToWorld(2200, 8200, 2000, 300, 2);
 
 	return ret;
 }

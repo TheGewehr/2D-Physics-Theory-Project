@@ -3,6 +3,14 @@
 #include "Application.h"
 #include "Physics.h"
 
+bool Box::Start()
+{
+
+	hitbox = App->coll->AddCollider({ (int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5), width, height }, Collider::Type::PLAYER, this, App->physics);
+
+	return true;
+}
+
 int Box::GetWidth()const // In pixels
 {
 	return width;

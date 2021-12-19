@@ -34,7 +34,7 @@ public:
 	// Removes all existing colliders
 	bool CleanUp() override;
 
-	void OnCollision(PhysBody* c1, PhysBody* c2) override; // adaptar la definicion a physbody o añadir un collider a box?
+	void OnCollision(Collider* body1, Collider* body2) override; // adaptar la definicion a physbody o añadir un collider a box?
 
 	// Adds a new collider to the list
 	Collider* AddCollider(SDL_Rect rect, Collider::Type type, PhysBody* point_ = nullptr, Module* listener = nullptr);
