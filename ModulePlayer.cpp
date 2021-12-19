@@ -1,10 +1,15 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModulePlayer.h"
+#include "Collisions.h"
+#include "ModuleInput.h"
+#include "Physics.h"
 //#include "PhysBody.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
+	//App->physics->AddBoxToWorld(100, 100, 100, 100, 1);
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -14,7 +19,11 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
+	
+	
 	return true;
+	
+
 }
 
 void ModulePlayer::SetPlayerLifes(int l)

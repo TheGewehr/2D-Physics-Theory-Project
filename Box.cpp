@@ -219,9 +219,13 @@ update_status Box::Update(float dt)
 		
 		//	// Compute Gravity force
 		float fgx = mass * 0.0f;
+		float fgy = 0;
 
-		float fgy = mass * 0.000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
-
+		if (verletIntegrator) fgy = mass * 0.0000000000001f; // Let's assume gravity is constant and downwards BIG FUIM!
+		else
+		{
+			fgy = mass * 0.00006; // DA MAXIMUM FUIM !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		}
 		//float fgy = mass * 0.00000001f; // Let's assume gravity is constant and downwards BIG FUIM!
 
 		//
@@ -261,7 +265,7 @@ update_status Box::Update(float dt)
 		//// You can also move this code into a subroutine: integrator_velocity_verlet(ball, dt);
 		verletIntegrator = true;
 
-		if (verletIntegrator == true) // la Y aumenta de manera exponencial
+		if (verletIntegrator == false) // la Y aumenta de manera exponencial
 		{
 			position.x += velocity.x * dt + 0.5f * acceleration.x * dt * dt;
 			position.y += velocity.y * dt + 0.5f * acceleration.y * dt * dt;
