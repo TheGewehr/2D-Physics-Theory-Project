@@ -11,7 +11,7 @@ class Box : public PhysBody
 {
 public:
 
-	Box(int x, int y, int w, int h, float mass_, float rc_, int type) : PhysBody(x, y, w, h)
+	Box(int x, int y, int w, int h, float mass_, float rc_, int type, int type02) : PhysBody(x, y, w, h)
 	{
 
 		width = w;
@@ -73,12 +73,18 @@ public:
 			objectType = staticBody;
 		}
 		
-
+		type_ = type02;
 		listener = nullptr;
 
 		// HITBOX
 		Start();
 		dontCheck = false;
+
+		if (type02 == 3)
+		{
+			impulseForce.x = 0.000005;
+			
+		}
 	}
 
 
@@ -102,7 +108,7 @@ public:
 
 	int width, height; //Pixels
 	Vector2D<float> impulseForce;
-
+	int type_;
 public:
 
 	bool shouldCollide;

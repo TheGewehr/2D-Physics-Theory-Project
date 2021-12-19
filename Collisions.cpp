@@ -242,7 +242,6 @@ Collider* Collisions::AddCollider(SDL_Rect rect, Collider::Type type, PhysBody* 
 	else
 	{
 
-
 		for (uint i = 0; i < MAX_COLLIDERS; ++i)
 		{
 			if (colliders[i] == nullptr)

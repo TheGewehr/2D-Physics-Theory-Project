@@ -15,8 +15,7 @@
 #include "ModulePhysbodyController.h"
 #include "Timer.h"
 #include "PerfTimer.h"
-
-
+#include "Enemy.h"
 class Collisions;
 class Physics;
 
@@ -34,7 +33,7 @@ public:
 	PyhsBodyController* phys_controller;
 	Physics* physics;
 	Collisions* coll;
-
+	Enemy* enemy;
 
 
 private:

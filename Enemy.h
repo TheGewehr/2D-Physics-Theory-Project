@@ -23,7 +23,6 @@ public:
 	bool CleanUp();
 	void SetEnemyLifes(int l);
 
-private:
 	int lifes;
 	SDL_Texture* graphic;
 	Box* enemyBox;

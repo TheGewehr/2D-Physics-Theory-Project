@@ -6,6 +6,7 @@
 #include "Physics.h"
 #include "stdlib.h"
 #include "time.h"
+#include "Box.h"
 
 //#include "PhysBody.h"
 
@@ -25,7 +26,7 @@ bool Enemy::Start()
 
 
 	lifes = 3;
-	graphic = App->textures->Load("worms/weapons/dorito.png");
+	//graphic = App->textures->Load("worms/weapons/dorito.png");
 
 
 	
@@ -34,7 +35,7 @@ bool Enemy::Start()
 
 
 
-	enemyBox = App->physics->AddBoxToWorld(2800, 400, 100, 100, 1.0, 0.8, 1);
+	enemyBox = App->physics->AddBoxToWorld(14800, 0, 100, 100, 1.0, 0.8, 1, 2);
 	srand(time(NULL));
 
 	return true;
@@ -58,34 +59,12 @@ bool Enemy::CleanUp()
 // Update: draw background
 update_status Enemy::Update(float dt)
 {
-	enemy_int = rand() % 10;
-
-	if (enemy_int == 1) // MOVE RIGHT
-	{
-		enemyBox->impulseForce.x = -0.00001;
-	}
-	else if (enemy_int == 2) //MOVE LEFT
-	{
-		enemyBox->impulseForce.x = 0.00001;
-	}
-	else if (enemy_int == 3) // JUMP
-	{
-		enemyBox->impulseForce.x = 0;
-		enemyBox->impulseForce.y = -0.000000000001;
-	}
-	else if (enemy_int == 4) //SHOOT
-	{
-
-	}
-	else //DO NOTHING
-	{
-		enemyBox->impulseForce.x = 0;
-	}
+	
 	return UPDATE_CONTINUE;
 }
 
 update_status Enemy::PostUpdate()
 {
-	App->renderer->Blit(graphic, enemyBox->worldPosition.x + enemyBox->point01.x, enemyBox->worldPosition.y + enemyBox->point01.y);
+	//App->renderer->Blit(graphic, enemyBox->worldPosition.x + enemyBox->point01.x, enemyBox->worldPosition.y + enemyBox->point01.y);
 	return UPDATE_CONTINUE;
 }

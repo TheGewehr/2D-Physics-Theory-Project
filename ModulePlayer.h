@@ -21,7 +21,7 @@ public:
 	bool CleanUp();
 	void SetPlayerLifes(int l);
 
-private:
+
 	int lifes;
 	SDL_Texture* graphic;
 	Box* playerBox;

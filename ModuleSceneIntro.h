@@ -53,6 +53,7 @@ public:
 
 	Box* enemy;
 	int enemy_int;
+	uint win_music;
 public:
 	
 	SDL_Texture* wall01;
@@ -61,5 +62,9 @@ public:
 	SDL_Texture* loose_Screen;
 	SDL_Texture* background;
 	
+	bool win_con;
+	bool game_end;
+	bool music01;
+	bool music02;
 
 };

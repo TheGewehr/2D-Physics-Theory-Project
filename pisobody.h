@@ -25,7 +25,7 @@ public:
 
 	bool start_enabled;
 	float GetRotation() const;
-
+	int type;
 	virtual int RayCast(int x1, int y1, int x2, int y2, float& normal_x, float& normal_y) const;
 	int GetId() const;
 

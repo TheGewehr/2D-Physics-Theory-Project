@@ -5,7 +5,9 @@
 
 bool Box::Start()
 {
+
 	hitbox = App->coll->AddCollider({ (int)(worldPosition.x - width * 0.5), (int)(worldPosition.y - height * 0.5), width, height }, Collider::Type::PLAYER, this, App->physics);
+	
 	verletIntegrator = true;
 	return true;
 }
@@ -205,6 +207,7 @@ update_status Box::Update(float dt)
 		position.y = hitbox->point->position.y;
 		force = hitbox->point->force;
 		objectType = hitbox->point->objectType;
+		pendingToDelete = hitbox->point->objectType;
 	}
 	else dontCheck = true;
 
@@ -325,6 +328,8 @@ update_status Box::Update(float dt)
 		hitbox->point->objectType = objectType;
 		hitbox->point->mass = mass;
 		hitbox->point->rc = rc;
+		hitbox->point->type = type_;
+		hitbox->point->pendingToDelete = pendingToDelete;
 	}
 
 	return UPDATE_CONTINUE;

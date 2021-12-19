@@ -45,7 +45,7 @@ public:
 	void SetDebug(bool d);
 	p2List<PhysBody*> GetWorld();
 
-	Box* AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type);
+	Box* AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type, int type02);
 
 	void OnCollision(Collider* body1, Collider* body2);
 

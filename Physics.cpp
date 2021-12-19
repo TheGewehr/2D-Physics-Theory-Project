@@ -123,10 +123,10 @@ p2List<PhysBody*> Physics::GetWorld()
 	return World;
 }
 
-Box* Physics::AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type)
+Box* Physics::AddBoxToWorld(int x, int y, int w, int h, float mass_, float rc_, int type, int type02)
 {
 	
-	Box* a = new Box(x, y, w, h, mass_, rc_, type);
+	Box* a = new Box(x, y, w, h, mass_, rc_, type, type02);
 	World.add(a);
 	return a;
 	
@@ -181,25 +181,40 @@ void Physics::OnCollision(Collider* body1, Collider* body2)
 		body1->point->velocity.y = body2->point->velocity.y;
 		body2->point->velocity.y = aux;
 
-		if (body2->point->position.x < body1->point->position.x) //&& body1->point->position.y - App->PixelToMeter(body1->point->height * 0.5) < body2->point->position.y)
+		if (body2->point->position.x < body1->point->position.x && body1->point->position.y - App->PixelToMeter(body1->point->height * 0.5) < body2->point->position.y)
 		{
 			body1->point->position.x = body2->point->position.x + App->PixelToMeter(body1->point->width * 0.5) + App->PixelToMeter(body1->point->width * 0.5);
-		}
-		else if (body2->point->position.y < body1->point->position.y)
-		{
-			body1->point->position.y = body2->point->position.y + App->PixelToMeter(body1->point->height * 0.5) + App->PixelToMeter(body1->point->height * 0.5);
-			body1->point->force.y = 0;
 		}
 		else //if(body2->point->position.y - App->PixelToMeter(body2->point->height * 0.5) < body1->point->position.y)
 		{
 			body1->point->position.x = body2->point->position.x - App->PixelToMeter(body1->point->width * 0.5) - App->PixelToMeter(body1->point->width * 0.5);
 		}
-		//else
-		//{
-		//	body1->point->position.y = body2->point->position.y - App->PixelToMeter(body1->point->height * 0.5) - App->PixelToMeter(body1->point->height * 0.5)+ 3;
-		//}
+		
+		if (body2->point->position.y < body1->point->position.y)
+		{
+			body1->point->position.y = body2->point->position.y + App->PixelToMeter(body1->point->height * 0.5) + App->PixelToMeter(body1->point->height * 0.5);
+			body1->point->force.y = 0;
+		}
+		else
+		{
+			body1->point->position.y = body2->point->position.y - App->PixelToMeter(body1->point->height * 0.5) - App->PixelToMeter(body1->point->height * 0.5)+ 3;
+		}
 	}
 	
+
+	if (body1->point->type == 3 && body2->point->type == 2)
+	{
+
+		App->scene_intro->win_con = true;
+		App->scene_intro->game_end = true;
+	}
+
+	if (body1->point->type == 2 && body2->point->type == 3)
+	{
+
+		App->scene_intro->win_con = true;
+		App->scene_intro->game_end = true;
+	}
 }
 
 //if (body1->point->objectType == staticBody)

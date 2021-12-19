@@ -17,7 +17,7 @@ Application::Application()
 	player = new ModulePlayer(this);
 	scene_intro = new ModuleSceneIntro(this);
 	phys_controller = new PyhsBodyController(this);
-	
+	enemy = new Enemy(this);
 	coll = new Collisions(this);
 
 	// The order of calls is very important!
@@ -29,6 +29,8 @@ Application::Application()
 	AddModule(phys_controller);
 	AddModule(physics);
 	AddModule(coll);
+	AddModule(player);
+	AddModule(enemy);
 	AddModule(renderer);
 	AddModule(textures);
 	AddModule(input);
@@ -38,7 +40,7 @@ Application::Application()
 	AddModule(scene_intro);
 	
 	// Player
-	AddModule(player);
+	
 	
 
 	ptimer = new PerfTimer();
